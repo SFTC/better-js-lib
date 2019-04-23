@@ -27,8 +27,7 @@ describe('判断是否为空对象', function() {
     expect(exchangeCoordinates({lng: 115.985058, lat: 40.008677}, 'bd', 'bd')).to.eql({lng: 115.985058, lat: 40.008677});
   });
   it('参数合法', function () {
-    expect(exchangeCoordinates({lng: 115.985058, lat: 40.008677}, 'bd', 'gg')).to.eql({ lng: 115.97842344078492, lat: 40.003018807517535 });
-    expect(exchangeCoordinates({lng: 115.985058, lat: 40.008677}, 'gg', 'bd')).to.eql({ lng: 115.99168440493902, lat: 40.014344819989375 });
+    expect(exchangeCoordinates({lng: 115.985058, lat: 40.008677}, 'bd', 'gg')).to.eql({ lng: 115.9784234408, lat: 40.0030188075 });
+    expect(exchangeCoordinates({lng: 115.985058, lat: 40.008677}, 'gg', 'bd')).to.eql({ lng: 115.9916844049, lat: 40.0143448200 });
   });
-    
 });

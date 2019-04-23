@@ -38,6 +38,7 @@ describe('判断数据类型', function() {
     expect(typeOf(Symbol('123'))).to.be.equal('symbol');
   });
   it('判断BigInt', function() {
+    // TOOD:这块需要判断其他环境的case，global 只是 node 环境的
     if (global.BigInt) {
       expect(typeOf(BigInt(42))).to.be.equal('bigint');
     } else {

@@ -1,6 +1,7 @@
 # [better-js-lib](https://github.com/SFTC/better-js-lib)
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SFTC/better-js-lib/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/SFTC/better-js-lib.svg?branch=feature-1.0.0)](https://travis-ci.org/SFTC/better-js-lib)
 
 更好用的 `JS|TS` 业务函数库
 
