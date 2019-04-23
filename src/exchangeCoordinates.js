@@ -26,6 +26,7 @@ function exchangeCoordinates(Coord, origin, format) {
     let theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * x_pi);
     var gg_lng = z * Math.cos(theta);
     var gg_lat = z * Math.sin(theta);
+    // 四舍五入保留小数点后 10 位有效数字
     gg_lng = NP.round(gg_lng, 10);
     gg_lat = NP.round(gg_lat, 10);
 
@@ -40,6 +41,7 @@ function exchangeCoordinates(Coord, origin, format) {
     let theta = Math.atan2(Coord.lat, Coord.lng) + 0.000003 * Math.cos(Coord.lng * x_pi);
     var bd_lng = z * Math.cos(theta) + 0.0065;
     var bd_lat = z * Math.sin(theta) + 0.006;
+    // 四舍五入保留小数点后 10 位有效数字
     bd_lng = NP.round(bd_lng, 10);
     bd_lat = NP.round(bd_lat, 10);
 
