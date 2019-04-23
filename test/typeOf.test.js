@@ -38,7 +38,7 @@ describe('判断数据类型', function() {
     expect(typeOf(Symbol('123'))).to.be.equal('symbol');
   });
   it('判断BigInt', function() {
-    if (BigInt) {
+    if (global.BigInt) {
       expect(typeOf(BigInt(42))).to.be.equal('bigint');
     } else {
       expect(true).to.be.ok();
