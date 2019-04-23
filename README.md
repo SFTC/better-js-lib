@@ -13,8 +13,6 @@
 - 集成代码风格校验(eslint|tslint)
 - 集成单元测试环境（mocha）
 
-> 注意: 如果不同时使用 `export` 与 `export default` 可打开 `legacy模式`，`legacy模式` 下的模块系统可以兼容 `ie6-8`，见rollup配置文件
-
 ## :pill: 兼容性
 
 单元测试保证支持如下环境：
