@@ -1,9 +1,10 @@
+import is from './is.js';
+
 function isVoidObject(obj) {
-  let objType = Object.prototype.toString.call(obj);
-  if (objType !== '[object Object]') {
+  if (!is.object(obj)) {
     throw new Error('参数类型非object');
   } else {
-    return !Object.keys(obj).length;
+    return is.empty(obj);
   }
 }
 export default isVoidObject;

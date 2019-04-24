@@ -1,4 +1,4 @@
-import NP from './precisionComputing.js';
+import NP from './NP.js';
 NP.enableBoundaryChecking(false); // 关闭数字范围超过边界的 warn 提示
 
 function exchangeCoordinates(Coord, origin, format) {

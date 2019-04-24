@@ -1,4 +1,4 @@
-import typeOf from './typeOf.js';
+import is from './is.js';
 export default function filterVoidObject(
   obj,
   isValid = function(value) {
@@ -10,13 +10,13 @@ export default function filterVoidObject(
     newObj = [];
 
   function rec(obj) {
-    if (typeOf(obj) !== 'object' && typeOf(obj) !== 'array') return obj;
+    if (!is.array(obj) && !is.object(obj)) return obj;
     let pos = oriObj.indexOf(obj);
     if (pos > -1) {
       return newObj[pos];
     }
     let result;
-    if (typeOf(obj) === 'array') {
+    if (is.array(obj)) {
       result = [];
     } else {
       result = {};
@@ -30,7 +30,7 @@ export default function filterVoidObject(
       if (!isValid(child)) {
         continue;
       }
-      if (typeOf(obj) === 'array') {
+      if (is.array(obj)) {
         result.push(child);
       } else {
         result[key] = child;

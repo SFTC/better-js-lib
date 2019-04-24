@@ -21,6 +21,4 @@ describe('判断是否为空', function() {
   it('判断NaN', function () {
     expect(isEmpty([])).to.not.be.ok();
   });
-
-
 });

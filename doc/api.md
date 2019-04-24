@@ -1,7 +1,5 @@
 # 文档
 
-函数库，封装了公共函数
-
 ## Utils.idcard
 
 根据身份证号获取到一些个人信息
@@ -11,7 +9,7 @@
 - param {string} card 身份证号
 - return {object} 个人信息，包括籍贯、生日、年龄和生肖
 
-例如：
+### 例子🌰
 
 ```js
 Utils.idcard.idcard('131002199408153611');
@@ -63,11 +61,103 @@ Utils.idcard.getArea('131002199408153611');
 
 ## Utils.is
 
-判断 JavaScript 类型的测试库
+判断 JavaScript 类型的校验库，可用于判断数据类型等
 
-这个方法可以用于判断数据类型和一些其他判断
+### 常规方法
 
-具体 API 请参考：[is](https://github.com/enricomarino/is)
+ - ``is.a`` (value, type) 或者 ``is.type`` (value, type) - 通过原生 typeof 校验数据类型
+ - ``is.defined`` (value) - 校验 value 是否有定义
+ - ``is.empty`` (value) - 校验 value 是否为空，这里的"空"包括 !!value === false、[]、{}
+ - ``is.equal`` (value, other) - 校验 value 和 other 是否相等，包括基本数据类型、函数、日期、数组、对象的深层对比
+ - ``is.hosted`` (value, host) - 校验 对象 `hosted` 的属性 `value` 是否是 hosted(包括除基本数据类型之外的对象数据类型)
+ - ``is.instance`` (value, constructor) - 校验 value 是否是 constructor 的实例化对象
+ - ``is.instanceof`` (value, constructor) - **已废弃**，因为在 ES3 及以后的浏览器环境 "instanceof" 成为一个关键字
+ - ``is.nil`` (value) - 校验 value 的数据类型是否是 null
+ - ``is.null`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "null" 成为一个关键字
+ - ``is.undef`` (value) - 校验 value 的数据类型是否是 undefined
+ - ``is.undefined`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "undefined" 成为一个关键字
+
+### arguments
+
+ - ``is.args`` (value) - 校验 value 的数据类型是否是参数数组
+ - ``is.arguments`` (value) - **已废弃**，因为 "arguments" 是一个关键字deprecated
+ - ``is.args.empty`` (value) - 校验 value 是否是一个空的参数数组
+
+### array
+
+ - ``is.array`` (value) - 校验 value 的数据类型是否是数组
+ - ``is.array.empty`` (value) - 校验 value 是否是一个空的数组
+ - ``is.arraylike`` (value) - 校验 value 是否是一个类数组
+
+### boolean
+
+ - ``is.bool`` (value) - 校验 value 的数据类型是否是布尔类型
+ - ``is.boolean`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "boolean" 成为一个关键字
+ - ``is.false`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "false" 成为一个关键字
+ - ``is.true`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "true" 成为一个关键字
+
+### date
+
+ - ``is.date`` (value) - 校验 value 的数据类型是否是日期类型
+
+### element
+
+ - ``is.element`` (value) - 校验 value 是否是一个 HTML 元素节点
+
+### error
+
+ - ``is.error`` (value) - 校验 value 的数据类型是否是 Error
+
+### function
+
+ - ``is.fn`` (value) - 校验 value 的数据类型是否是函数类型(包括 `Function`、`GeneratorFunction`、`AsyncFunction`)
+ - ``is.function`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "function" 成为一个关键字
+
+### number
+
+ - ``is.number`` (value) - 校验 value 的数据类型是否是数字
+ - ``is.infinite`` (value) - 校验 value 是否为无穷大
+ - ``is.decimal`` (value) - 校验 value 是否为小数
+ - ``is.divisibleBy`` (value, n) - 校验 value 是否可以被整除
+ - ``is.integer`` (value) - 校验 value 是否为整数
+ - ``is.int`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "int" 成为一个关键字
+ - ``is.maximum`` (value, others) - 判断 value 是否是 `others`数组中最大的
+ - ``is.minimum`` (value, others) - 判断 value 是否是 `others`数组中最小的
+ - ``is.nan`` (value) - 判断 value 是否是 NaN
+ - ``is.even`` (value) - 判断 value 是否是偶数
+ - ``is.odd`` (value) - 判断 value 是否是奇数
+ - ``is.ge`` (value, other) - 判断 value 是否大于或等于 other
+ - ``is.gt`` (value, other) - 判断 value 是否大于 other
+ - ``is.le`` (value, other) - 判断 value 是否小于或等于 other
+ - ``is.lt`` (value, other) - 判断 value 是否小于 other
+ - ``is.within`` (value, start, finish) - 判断 value 是否位于 [start, finish] 区间内
+
+### object
+
+ - ``is.object`` (value) - 校验 value 的数据类型是否是对象
+
+### regexp
+
+ - ``is.regexp`` (value) - 校验 value 的数据类型是否是正则表达式
+
+### string
+
+ - ``is.string`` (value) - 校验 value 的数据类型是否是字符串
+
+### encoded binary
+
+ - ``is.base64`` (value) - 校验 value 是否是一个 base64 编码的二进制数据
+ - ``is.hex`` (value) - 校验 value 是否是一个十六进制数据
+
+### Symbols
+
+ - ``is.symbol`` (value) - 校验 value 的数据类型是否是 symbol
+
+### BigInts
+
+ - ``is.bigint`` (value) - 校验 value 的数据类型是否是 ES-提议的 bigint 类型
+
+更多 API 请参考：[is](https://github.com/enricomarino/is)
 
 ---
 
@@ -75,15 +165,11 @@ Utils.idcard.getArea('131002199408153611');
 
 全局替换树形结构数据的某个字段，并且在对应二级children数组上添加“全部”的选项
 
-### type
-
-函数参数和返回值
-
-- param {arr} [arr] - 要处理的数组
-- param {string} [newKey] - 要替换成的 key
-- param {string} [oldKey] - 要被换成的 key
+- param {array} arr - 要处理的数组
+- param {string} newKey - 要替换成的 key
+- param {string} oldKey - 要被换成的 key
 - param {boolen} [isDelete] - 旧的 key 是否要被干掉
-- return {arr} 返回处理之后的树形结构数据
+- return {array} 返回处理之后的树形结构数据
 
 ### 例子🌰
 
@@ -189,7 +275,7 @@ Utils.tree(arr, 'title', 'dept_name', false);
 - param {string} message 需要校验的信息
 - return {boolean} 校验结果
 
-例如：
+### 例子🌰
 
 ```js
 /* 校验字符串是否都是中文 */
@@ -219,7 +305,7 @@ Utils.check.checkPhone('13888888888'); // true
 - param {string} [url] 可以通过传入 url 参数来获取指定 url 的参数，不传则默认为 window.location.href
 - return {string|object|null} 返回对应 key 的 value，如果没有的话则返回 null
 
-例如：
+### 例子🌰
 
 ```js
 // url: http://localhost?name=zhangsan&age=25&phone=13888888888
@@ -248,7 +334,7 @@ getUrlQuery('sex'); // null
 - param {object} [config] 配置项
 - - {boolean} hasPrefix 在首位增加"?"
 
-例如：
+### 例子🌰
 
 ```js
 getUrlString({ name: "zhangsan", age: "25", phone: 13888888888 }); // name=zhangsan&age=25&phone=13888888888
@@ -267,17 +353,10 @@ getUrlString({ person: { name: "zhangsan", age: "25" }, auth: [1, 2, 3] }); // p
 这个方法用来过滤对象中的空值
 
 - obj {Object} 待过滤object
-- isValid {Function} [自定义回调函数，返回有效的值]
+- isValid {Function} 自定义回调函数，返回有效的值
 - return {Object} 过滤后的object
 
-## Utils.isVoidObject
-
-这个方法用来判断是否为空对象
-
-- param {Object} 待校验object
-- return {Boolean} 是否为空对象
-
-例如：
+### 例子🌰
 
 ```js
 Utils.filterVoidObject({
@@ -293,46 +372,23 @@ Utils.filterVoidObject({
     e: '1'
   }
 */
+```
+
+---
+
+## Utils.isVoidObject
+
+这个方法用来判断是否为空对象
+
+- param {Object} 待校验object
+- return {Boolean} 是否为空对象
+
+```js
 Utils.isVoidObject({});
 /* true */
 
 Utils.isVoidObject({a: 1});
 /* false */
-```
-
----
-
-## Utils.typeOf
-
-这个方法用来判断传入内容的数据类型
-
-- value { * } 被判断的值
-- return {String}数据类型，目前支持的数据类型有 `boolean` `number` `string` `null` `object` `array` `undefined` `function` `date` `regExp` `symbol`
-
-## Utils.singleDigitFormat
-
-小于9的数字自动在首位填0
-
-- param {Number/String} 待转换参数
-- return {String} 格式化后参数
-
-例如：
-
-```js
-Utils.typeOf(true); // boolean
-Utils.typeOf(123); // number
-Utils.typeOf('value'); // string
-Utils.typeOf(null); // null
-Utils.typeOf({}); // object
-Utils.typeOf([]); // array
-Utils.typeOf(undefined); // undefined
-Utils.typeOf(function(){}); // function
-Utils.typeOf(Date); // date
-Utils.singleDigitFormat(9);
-/* 09 */
-
-Utils.singleDigitFormat(11);
-/* 11 */
 ```
 
 ---
@@ -344,21 +400,24 @@ Utils.singleDigitFormat(11);
 - text {String} 进行校验的字符串
 - return {Boolean}是否含有表情符号
   
-例如：
+### 例子🌰
 
 ```js
 Utils.hasEmoji('Unicorn 🦄'); // true
 
 Utils.hasEmoji('cat'); // false
+```
+
+---
 
 ## Utils.getArrIntersection
 
 取多个数组的交集
 
-- param {Array ...} 内容为一个一个的数组
+- param {Array[Array,Array,...]} 内容为一个一个的数组
 - return {Array} 交集后的数组
 
-例如：
+### 例子🌰
 
 ```js
 Utils.getArrIntersection([1, 2], [1, 2, 4, 5], [2, 4, 6]);
@@ -370,28 +429,52 @@ Utils.getArrIntersection([1, 2], [1, 2, 4, 5], [3, 4, 6]);
 
 ---
 
-## Utils.toFixed
+## Utils.NP
 
-这个方法用来将 num 四舍五入为 digit 位小数的数字
+这个方法用来解决 JavaScript 中浮点数 加、减、乘、除中数字精度的问题
 
-- num {Number} 需要处理的数字
-- digit {Number} 四舍五入后的小数位数
-- return {Number} 处理后的数字
-  
-例如：
+### 方法
 
 ```js
+NP.strip(num)                      // 获取离 num 最近的正确的数字
+NP.plus(num1, num2, num3, ...)     // 加法，num + num2 + num3，至少传入两个数字
+NP.minus(num1, num2, num3, ...)    // 减法，num - num2 - num3
+NP.times(num1, num2, num3, ...)    // 乘法，num1 * num2 * num3
+NP.divide(num1, num2, num3, ...)   // 除法，num1 / num2 / num3
+NP.round(num, ratio)               // 为 num 保留 ratio 位小数
+```
 
-Utils.toFixed(0.666, 2); // 0.67
+### 例子🌰
+
+```js
+NP.strip(0.09999999999999998); // = 0.1
+NP.plus(0.1, 0.2);             // = 0.3, not 0.30000000000000004
+NP.plus(2.3, 2.4);             // = 4.7, not 4.699999999999999
+NP.minus(1.0, 0.9);            // = 0.1, not 0.09999999999999998
+NP.times(3, 0.3);              // = 0.9, not 0.8999999999999999
+NP.times(0.362, 100);          // = 36.2, not 36.199999999999996
+NP.divide(1.21, 1.1);          // = 1.1, not 1.0999999999999999
+NP.round(0.105, 2);            // = 0.11, not 0.1
+```
+
+注：如果你不想得到这样的提示 `XXX is beyond boundary when transfer to integer, the results may not be accurate`，使用下面的方式想项目启动时关闭边界检查：
+
+```js
+NP.enableBoundaryChecking(false); // default param is true
+```
+
+更多 API 请参考：[number-precision](https://github.com/nefe/number-precision)
+
+---
 
 ## Utils.deepCopy
 
-这个方法用来深拷贝数据，目前支持的数据类型：对象、数组
+这个方法用来深拷贝数据，方法同 [lodash.clonedeep](https://lodash.com/docs/4.17.11#cloneDeep)，目前支持的数据类型：对象、数组、函数等
 
 - param {Any} 需要被深拷贝的数据
-- return {Any} 拷贝的数据
+- return {Any} 拷贝的新数据
 
-例如：
+### 例子🌰
 
 ```js
 var obj = {
@@ -412,17 +495,14 @@ obj.key.name; // 'person'
 
 判断参数是否为空、 null、 undefined
 
-- obj { * } 任何对象
-- return {Boolean} 是或否
+- obj {*} 任何数据
+- return {Boolean} 校验结果
   
-例如：
+### 例子🌰
 
 ```js
-
-Utils.isEmpty(null);
-/*
- true
-*/
+Utils.isEmpty(null); // true
+Utils.isEmpty('this is a string'); // false
 ```
 
 ---
@@ -437,24 +517,10 @@ Utils.isEmpty(null);
 - param {Number} [e_lng] 终点经度
 - return {Number} 距离，单位为米
 
-例如：
+### 例子🌰
 
 ```js
 Utils.getPointsDistance(40, 166, 40, 167); // 118.1
-```
-
----
-
-## Utils.numberPrecision
-
-这个方法用来解决浮点数计算的精度问题
-
-- params {Number} 进行校验的字符串
-- return {Number} 计算后的结果数字
-  
-例如：
-
-```js
 ```
 
 ---
@@ -468,20 +534,11 @@ Utils.getPointsDistance(40, 166, 40, 167); // 118.1
 - param {String} [format] 要转成的格式，可选值：[gg:国标，bd：百度坐标]
 - return {Object} 转换后的坐标
 
-例如：
+### 例子🌰
 
 ```js
 Utils.exchangeCoordinates({ lng: 123, lat: 45 }, 'bd', 'gg'); // { lng: 123, lat: 45 }
 ```
-
----
-
-## Utils.cashCapitalizedTurn
-
-这个方法是用来现金转大写或者大写转现金
-
-- Number { * } 任何数字，int，float
-- return {String} 相对应的大写
 
 ---
 
@@ -493,7 +550,7 @@ Utils.exchangeCoordinates({ lng: 123, lat: 45 }, 'bd', 'gg'); // { lng: 123, lat
 
 这个方法用来格式化时间的数字，输入小于 9 的数字将输出数字前面加 0 的字符串，大于 9 的数字直接变以字符串的形式输出
 
-例如：
+### 例子🌰
 
 ```js
 Utils.formatDate.formatTimeNum(6); // "06"
@@ -508,7 +565,7 @@ Utils.formatDate.formatTimeNum(12); // "12"
 - param {String} formatVal 格式化模板，要格式化的形式
 - return {String} 格式化后时间
 
-例如：
+### 例子🌰
 
 ```js
 Utils.formatDate.format('2019-01-25', '[YYYY] YYYY-MM-DDTHH:mm:ssZ[Z]'); // 'YYYY 2019-01-25T00:00:00-02:00Z'
@@ -524,7 +581,7 @@ Utils.formatDate.format('2019-01-25', '[YYYY] YYYY-MM-DDTHH:mm:ssZ[Z]'); // 'YYY
 - param {String} [formatVal] 格式化模板，默认是 'HH:mm:ss'
 - return {String} 时间
 
-例如：
+### 例子🌰
 
 ```js
 Utils.formatDate.formatSeconds('86399'); // 23:59:59
@@ -541,7 +598,7 @@ Utils.formatDate.formatSeconds('86399', 'mm:ss'); // 59:59
 - param {String} [unit] 单位，可选值["s":秒|"ms":"毫秒"|"":"dayjs对象"]
 - return {Number|Object} 时间戳或者 dayjs 对象
 
-例如：
+### 例子🌰
 
 ```js
 Utils.formatDate.getDayZeroTm('2019-01-01 08:00:00', 's'); // 1546272000
@@ -556,7 +613,7 @@ Utils.formatDate.getDayZeroTm('2019-01-01 08:00:00'); // 同 dayjs(1546272000000
 - param {String|Date} dateStr 可以解析传入的一个标准的[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)时间字符串，或者是一个 Date 对象
 - return {Object} dayjs 对象
 
-例如：
+### 例子🌰
 
 ```js
 Utils.formatDate.dayjs('2019-01-01 08:00:00'); // 同 dayjs('2019-01-01 08:00:00') 返回的对象
