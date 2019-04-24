@@ -1,6 +1,14 @@
 # 计划列表
-初衷：开发一套适合业务特点的函数库
-这里列出会在未来添加的新功能，和已经完成的功能
-- [X] 已完成
-- [ ] 待实现
 
+这里列出会在未来添加的新功能
+<!-- - [X] 已完成 -->
+- [ ] Utils.cashCapitalizedTurn
+
+---
+
+## Utils.cashCapitalizedTurn
+
+这个方法是用来现金转大写或者大写转现金
+
+- Number { * } 任何数字，int，float
+- return {String} 相对应的大写
