@@ -14,6 +14,7 @@
 - 多环境支持（支持浏览器原生，支持AMD，CMD，支持Webpack，Rollup，fis等，支持Node）
 - 集成代码风格校验(eslint|tslint)
 - 集成单元测试环境（mocha）
+- 集成 coveralls 测试覆盖率
 
 ## :pill: 兼容性
 
