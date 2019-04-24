@@ -43,25 +43,25 @@
 通过npm下载安装代码
 
 ```bash
-$ npm install --save js-lib
+$ npm install --save better-js-lib
 ```
 
 如果你是node环境
 
 ```js
-var base = require('js-lib');
+var base = require('better-js-lib');
 ```
 
 如果你是webpack等环境
 
 ```js
-import base from 'js-lib';
+import base from 'better-js-lib';
 ```
 
 如果你是requirejs环境
 
 ```js
-requirejs(['node_modules/js-lib/dist/index.aio.js'], function (base) {
+requirejs(['node_modules/better-js-lib/dist/index.aio.js'], function (base) {
     // xxx
 })
 ```
@@ -69,7 +69,7 @@ requirejs(['node_modules/js-lib/dist/index.aio.js'], function (base) {
 如果你是浏览器环境
 
 ```html
-<script src="node_modules/js-lib/dist/index.aio.js"></script>
+<script src="node_modules/better-js-lib/dist/index.aio.js"></script>
 ```
 
 ## :bookmark_tabs: 文档
