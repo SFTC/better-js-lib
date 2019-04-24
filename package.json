@@ -1,6 +1,6 @@
 {
   "name": "better-js-lib",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "更好用的 `JS|TS` 业务函数库",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -42,6 +42,7 @@
     "eslint": "4.18.2",
     "eslint-plugin-html": "^5.0.3",
     "expect.js": "0.3.1",
+    "growl": "^1.10.5",
     "mocha": "3.5.3",
     "mocha-jsdom": "^2.0.0",
     "nyc": "13.1.0",
