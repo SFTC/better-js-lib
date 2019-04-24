@@ -1,6 +1,6 @@
 {
   "name": "better-js-lib",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "更好用的 `JS|TS` 业务函数库",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -26,7 +26,7 @@
     "test": "npm run lint && cross-env NODE_ENV=test nyc mocha",
     "test:some": "cross-env NODE_ENV=test nyc mocha ./test/deepCopy.test.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "release": "npn test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags"
+    "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags"
   },
   "author": "SFTC",
   "license": "MIT",
