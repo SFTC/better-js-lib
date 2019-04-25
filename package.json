@@ -6,6 +6,7 @@
   "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "sideEffects": false,
+  "srctype": "ts",
   "files": [
     "dist"
   ],
@@ -15,6 +16,20 @@
     "js-lib"
   ],
   "scripts": {
+    "rename": "node rename.js",
+    "clean": "rimraf ./dist",
+    "lint": "tslint -c tslint.json src/ts/*.ts",
+    "build:self": "rollup -c config/rollup.config.js",
+    "build:esm": "rollup -c config/rollup.config.esm.js",
+    "build:aio": "rollup -c config/rollup.config.aio.js",
+    "build:aio.min": "cross-env NODE_ENV=production npm run build:aio",
+    "build": "npm run clean && npm run build:self && npm run build:esm && npm run build:aio && npm run build:aio.min",
+    "test": "npm run lint && nyc --nycrc-path .nycrc-ts mocha",
+    "test:some": "nyc --nycrc-path .nycrc-ts mocha ./test/check.test.js",
+    "coveralls": "nyc --nycrc-path .nycrc-ts report --reporter=text-lcov | coveralls",
+    "release": "npn test && npm run build && git commit -am $npm_package_version && git push && git tag $npm_package_version && git push --tags"
+  },
+  "scripts:js": {
     "clean": "rimraf ./dist",
     "lint": "eslint -c .eslintrc.js src/**.js",
     "lint:fix": "eslint --fix -c .eslintrc.js src/**.js",
@@ -54,13 +69,17 @@
     "mocha-jsdom": "2.0.0",
     "nyc": "^14.0.0",
     "rimraf": "2.6.2",
-    "rollup": "0.57.1",
-    "rollup-plugin-babel": "4.0.3",
+    "rollup": "1.10.1",
+    "rollup-plugin-babel": "4.3.2",
     "rollup-plugin-commonjs": "8.3.0",
     "rollup-plugin-copy": "^0.2.3",
     "rollup-plugin-node-resolve": "3.0.3",
-    "rollup-plugin-uglify": "1.0.0",
-    "source-map-support": "0.5.9"
+    "rollup-plugin-typescript2": "^0.21.0",
+    "rollup-plugin-uglify": "^6.0.2",
+    "source-map-support": "^0.5.9",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",

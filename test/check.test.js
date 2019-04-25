@@ -1,6 +1,6 @@
 var expect = require('expect.js');
 
-var check = require('../src/check.js');
+var check = require('../src/ts/check.ts');
 
 describe('校验工具', function() {
   describe('校验字符串是否都是中文', function () {
