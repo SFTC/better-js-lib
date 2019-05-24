@@ -1,6 +1,6 @@
 {
   "name": "better-js-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "更好用的 `JS|TS` 业务函数库",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
