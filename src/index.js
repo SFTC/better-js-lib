@@ -36,3 +36,23 @@ export default {
   singleDigitFormat,
   tree
 };
+
+export {
+  check,
+  deepCopy,
+  exchangeCoordinates,
+  filterVoidObject,
+  formatDate,
+  getArrIntersection,
+  getPointsDistance,
+  getUrlQuery,
+  getUrlString,
+  hasEmoji,
+  idcard,
+  is,
+  isEmpty,
+  isVoidObject,
+  NP,
+  singleDigitFormat,
+  tree
+};
