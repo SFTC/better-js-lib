@@ -12,6 +12,6 @@ module.exports = {
     banner: common.banner,
   },
   plugins: [
-    common.getCompiler()
+    ...common.getCompiler()
   ]
 };

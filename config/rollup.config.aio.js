@@ -26,7 +26,7 @@ module.exports = {
     commonjs({
       include: 'node_modules/**',
     }),
-    common.getCompiler(),
+    ...common.getCompiler(),
     (prod && uglify())
   ]
 };

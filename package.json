@@ -1,6 +1,6 @@
 {
   "name": "better-js-lib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "更好用的 `JS|TS` 业务函数库",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -58,6 +58,7 @@
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-commonjs": "8.3.0",
     "rollup-plugin-copy": "^0.2.3",
+    "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "3.0.3",
     "rollup-plugin-uglify": "1.0.0",
     "source-map-support": "0.5.9"
