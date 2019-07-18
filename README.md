@@ -7,13 +7,15 @@
 
 更好用的 `JS|TS` 业务函数库
 
+[Docs](./doc/api.md)
+
 ## :star: 特性
 
 - 支持ES6+或TypeScript编写源码，编译生成生产代码
 - 集成 babel-runtime (默认关闭)
 - 第三方依赖自动注入（自动剔除第三方依赖无用代码tree shaking）
 - 多环境支持（支持浏览器原生，支持AMD，CMD，支持Webpack，Rollup，fis等，支持Node）
-- 集成代码风格校验(eslint|tslint)
+- 集成代码风格校验(eslint)
 - 集成单元测试环境（mocha）
 - 集成 coveralls 测试覆盖率
 
@@ -74,8 +76,7 @@ requirejs(['node_modules/better-js-lib/dist/index.aio.js'], function (base) {
 <script src="node_modules/better-js-lib/dist/index.aio.js"></script>
 ```
 
-## :bookmark_tabs: 文档
-[API](./doc/api.md)
+## :bookmark_tabs: [文档](./doc/api.md)
 
 首次运行需要先安装依赖
 
