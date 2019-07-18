@@ -116,7 +116,7 @@ Utils.idcard.getArea('131002199408153611');
 
 ---
 
-## Utils.is
+## Utils.is [:top:](#文档)
 
 判断 JavaScript 类型的校验库，可用于判断数据类型等
 
@@ -218,7 +218,7 @@ Utils.idcard.getArea('131002199408153611');
 
 ---
 
-## Utils.tree
+## Utils.tree [:top:](#文档)
 
 全局替换树形结构数据的某个字段，并且在对应二级children数组上添加“全部”的选项
 
@@ -323,7 +323,7 @@ Utils.tree(arr, 'title', 'dept_name', false);
 
 ---
 
-## Utils.check
+## Utils.check [:top:](#文档)
 
 校验信息
 
@@ -354,7 +354,7 @@ Utils.check.checkPhone('13888888888'); // true
 
 ---
 
-## Utils.getUrlQuery
+## Utils.getUrlQuery [:top:](#文档)
 
 获取 url 中的参数
 
@@ -383,7 +383,7 @@ getUrlQuery('sex'); // null
 
 ---
 
-## Utils.getUrlString
+## Utils.getUrlString [:top:](#文档)
 
 将对象转换为 url 地址后面可以携带的参数形式
 
@@ -405,7 +405,7 @@ getUrlString({ person: { name: "zhangsan", age: "25" }, auth: [1, 2, 3] }); // p
 
 ---
 
-## Utils.filterVoidObject
+## Utils.filterVoidObject [:top:](#文档)
 
 这个方法用来过滤对象中的空值
 
@@ -433,7 +433,7 @@ Utils.filterVoidObject({
 
 ---
 
-## Utils.isVoidObject
+## Utils.isVoidObject [:top:](#文档)
 
 这个方法用来判断是否为空对象
 
@@ -450,7 +450,7 @@ Utils.isVoidObject({a: 1});
 
 ---
 
-## Utils.hasEmoji
+## Utils.hasEmoji [:top:](#文档)
 
 这个方法用来校验字符串中是否含有 Emoji 表情符号
 
@@ -467,7 +467,7 @@ Utils.hasEmoji('cat'); // false
 
 ---
 
-## Utils.getArrIntersection
+## Utils.getArrIntersection [:top:](#文档)
 
 取多个数组的交集
 
@@ -486,7 +486,7 @@ Utils.getArrIntersection([1, 2], [1, 2, 4, 5], [3, 4, 6]);
 
 ---
 
-## Utils.NP
+## Utils.NP [:top:](#文档)
 
 这个方法用来解决 JavaScript 中浮点数 加、减、乘、除中数字精度的问题
 
@@ -524,7 +524,7 @@ NP.enableBoundaryChecking(false); // default param is true
 
 ---
 
-## Utils.deepCopy
+## Utils.deepCopy [:top:](#文档)
 
 这个方法用来深拷贝数据，方法同 [lodash.clonedeep](https://lodash.com/docs/4.17.11#cloneDeep)，目前支持的数据类型：对象、数组、函数等
 
@@ -548,7 +548,7 @@ obj.key.name; // 'person'
 
 ---
 
-## Utils.isEmpty
+## Utils.isEmpty [:top:](#文档)
 
 判断参数是否为空、 null、 undefined
 
@@ -564,7 +564,7 @@ Utils.isEmpty('this is a string'); // false
 
 ---
 
-## Utils.getPointsDistance
+## Utils.getPointsDistance [:top:](#文档)
 
 这个方法用来计算两个坐标点之间的直线距离
 
@@ -582,7 +582,7 @@ Utils.getPointsDistance(40, 166, 40, 167); // 118.1
 
 ---
 
-## Utils.exchangeCoordinates
+## Utils.exchangeCoordinates [:top:](#文档)
 
 这个方法用来转化坐标，以用于不同的坐标系
 
@@ -599,7 +599,7 @@ Utils.exchangeCoordinates({ lng: 123, lat: 45 }, 'bd', 'gg'); // { lng: 123, lat
 
 ---
 
-## Utils.formatDate
+## Utils.formatDate [:top:](#文档)
 
 这个方法集合了 **“时间类”** 的方法，引用 **[dayjs](https://github.com/iamkun/dayjs)** 时间库，因此用户也可以使用到所有的 dayjs 方法
 
