@@ -57,7 +57,7 @@
       * [Utils.formatDate.dayjs](#utilsformatdatedayjs)
       * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-17)
 
-## Utils.idcard [:top:](#文档)
+## Utils.idcard
 
 根据身份证号获取到一些个人信息
 
@@ -114,9 +114,11 @@ Utils.idcard.getArea('131002199408153611');
 可以通过 idcard 方法获取身份证号相关的全部信息，也可以通过单独的方法获取指定信息
 注：如果传入身份证号的格式不对，以上方法统一返回数字 -1；请用 -1 判断身份证格式是否合法，没必要在获取身份证号信息之前自己写方法校验是否合法
 
+[:top:](#文档)
+
 ---
 
-## Utils.is [:top:](#文档)
+## Utils.is
 
 判断 JavaScript 类型的校验库，可用于判断数据类型等
 
@@ -216,9 +218,11 @@ Utils.idcard.getArea('131002199408153611');
 
 更多 API 请参考：[is](https://github.com/enricomarino/is)
 
+[:top:](#文档)
+
 ---
 
-## Utils.tree [:top:](#文档)
+## Utils.tree
 
 全局替换树形结构数据的某个字段，并且在对应二级children数组上添加“全部”的选项
 
@@ -320,10 +324,11 @@ Utils.tree(arr, 'title', 'dept_name', false);
 ];
 */
 ```
+[:top:](#文档)
 
 ---
 
-## Utils.check [:top:](#文档)
+## Utils.check
 
 校验信息
 
@@ -351,10 +356,11 @@ Utils.check.checkPhone('13888888888'); // true
 /* 校验"手机， 座机， 分机号码"是否合法 */
 Utils.check.checkPhone('13888888888'); // true
 ```
+[:top:](#文档)
 
 ---
 
-## Utils.getUrlQuery [:top:](#文档)
+## Utils.getUrlQuery
 
 获取 url 中的参数
 
@@ -380,10 +386,11 @@ getUrlQuery('sex'); // null
 ```
 
 支持获取带 hash 的 url 的参数
+[:top:](#文档)
 
 ---
 
-## Utils.getUrlString [:top:](#文档)
+## Utils.getUrlString
 
 将对象转换为 url 地址后面可以携带的参数形式
 
@@ -403,9 +410,11 @@ getUrlString({ person: { name: "zhangsan", age: "25" }, auth: [1, 2, 3] }); // p
 
 非原型数据类型的数据会做 JSON.stringify 处理
 
+[:top:](#文档)
+
 ---
 
-## Utils.filterVoidObject [:top:](#文档)
+## Utils.filterVoidObject
 
 这个方法用来过滤对象中的空值
 
@@ -431,9 +440,11 @@ Utils.filterVoidObject({
 */
 ```
 
+[:top:](#文档)
+
 ---
 
-## Utils.isVoidObject [:top:](#文档)
+## Utils.isVoidObject
 
 这个方法用来判断是否为空对象
 
@@ -448,9 +459,11 @@ Utils.isVoidObject({a: 1});
 /* false */
 ```
 
+[:top:](#文档)
+
 ---
 
-## Utils.hasEmoji [:top:](#文档)
+## Utils.hasEmoji
 
 这个方法用来校验字符串中是否含有 Emoji 表情符号
 
@@ -465,9 +478,11 @@ Utils.hasEmoji('Unicorn 🦄'); // true
 Utils.hasEmoji('cat'); // false
 ```
 
+[:top:](#文档)
+
 ---
 
-## Utils.getArrIntersection [:top:](#文档)
+## Utils.getArrIntersection
 
 取多个数组的交集
 
@@ -484,9 +499,11 @@ Utils.getArrIntersection([1, 2], [1, 2, 4, 5], [3, 4, 6]);
 /* [] */
 ```
 
+[:top:](#文档)
+
 ---
 
-## Utils.NP [:top:](#文档)
+## Utils.NP
 
 这个方法用来解决 JavaScript 中浮点数 加、减、乘、除中数字精度的问题
 
@@ -522,9 +539,11 @@ NP.enableBoundaryChecking(false); // default param is true
 
 更多 API 请参考：[number-precision](https://github.com/nefe/number-precision)
 
+[:top:](#文档)
+
 ---
 
-## Utils.deepCopy [:top:](#文档)
+## Utils.deepCopy
 
 这个方法用来深拷贝数据，方法同 [lodash.clonedeep](https://lodash.com/docs/4.17.11#cloneDeep)，目前支持的数据类型：对象、数组、函数等
 
@@ -546,9 +565,11 @@ obj_copy.key.name = 'person_copy';
 obj.key.name; // 'person'
 ```
 
+[:top:](#文档)
+
 ---
 
-## Utils.isEmpty [:top:](#文档)
+## Utils.isEmpty
 
 判断参数是否为空、 null、 undefined
 
@@ -562,9 +583,11 @@ Utils.isEmpty(null); // true
 Utils.isEmpty('this is a string'); // false
 ```
 
+[:top:](#文档)
+
 ---
 
-## Utils.getPointsDistance [:top:](#文档)
+## Utils.getPointsDistance
 
 这个方法用来计算两个坐标点之间的直线距离
 
@@ -580,9 +603,11 @@ Utils.isEmpty('this is a string'); // false
 Utils.getPointsDistance(40, 166, 40, 167); // 118.1
 ```
 
+[:top:](#文档)
+
 ---
 
-## Utils.exchangeCoordinates [:top:](#文档)
+## Utils.exchangeCoordinates
 
 这个方法用来转化坐标，以用于不同的坐标系
 
@@ -597,9 +622,11 @@ Utils.getPointsDistance(40, 166, 40, 167); // 118.1
 Utils.exchangeCoordinates({ lng: 123, lat: 45 }, 'bd', 'gg'); // { lng: 123, lat: 45 }
 ```
 
+[:top:](#文档)
+
 ---
 
-## Utils.formatDate [:top:](#文档)
+## Utils.formatDate
 
 这个方法集合了 **“时间类”** 的方法，引用 **[dayjs](https://github.com/iamkun/dayjs)** 时间库，因此用户也可以使用到所有的 dayjs 方法
 
@@ -677,6 +704,8 @@ Utils.formatDate.dayjs('2019-01-01 08:00:00'); // 同 dayjs('2019-01-01 08:00:00
 ```
 
 注：这个方法会返回一个 dayjs 对象，也就是说返回的对象也拥有 dayjs 中所有的方法
+
+[:top:](#文档)
 
 ---
 
