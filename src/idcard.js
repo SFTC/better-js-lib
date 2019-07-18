@@ -1,4 +1,5 @@
 import { checkIDCard } from './check.js';
+import areaMap from './assets/areaCode.min.json';
 
 // 柯里化
 // TODO: 只实现了功能，函数健壮性不够
@@ -164,8 +165,6 @@ export function getArea(identityCard) {
   var province = proIdCard.slice(0, 2); // 省 code
   var city = proIdCard.slice(2, 4); // 市 code
   var district = proIdCard.slice(4, 6); // 区 code
-
-  var areaMap = require('./assets/areaCode.min.json');
 
   var provinceChinese = ''; // 省 中文
   if (areaMap[province] && areaMap[province].name) {
