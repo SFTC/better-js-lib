@@ -1,6 +1,7 @@
 # [better-js-lib](https://github.com/SFTC/better-js-lib)
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SFTC/better-js-lib/blob/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/better-js-lib.svg)](https://www.npmjs.com/package/better-js-lib)
 [![Build Status](https://travis-ci.org/SFTC/better-js-lib.svg?branch=feature-1.0.0)](https://travis-ci.org/SFTC/better-js-lib)
 [![Coverage Status](https://coveralls.io/repos/github/SFTC/better-js-lib/badge.svg?branch=feature-1.0.0)](https://coveralls.io/github/SFTC/better-js-lib?branch=feature-1.0.0)
 
