@@ -4,18 +4,19 @@ module.exports = {
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "sourceType": "module"
     },
-    "globals": {
-      "describe": true,
-      "it": true,
-    },
+    "plugins": ["@typescript-eslint"],
     "rules": {
         "indent": [
             "error",
-            2
+            4
         ],
         "linebreak-style": [
             "error",
@@ -29,6 +30,7 @@ module.exports = {
             "error",
             "always"
         ],
-        "no-console": 0
+        "no-console": "off",
+        "max-classes-per-file": ["error", 2],
     }
 };

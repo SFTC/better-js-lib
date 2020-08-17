@@ -1,0 +1,11 @@
+{
+    "name": "better-js-lib",
+    "npmname": "better-js-lib",
+    "umdname": "better-js-lib",
+    "username": "bluescurry",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.6.0"
+}

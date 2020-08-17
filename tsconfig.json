@@ -3,10 +3,10 @@
         "target": "ES5",
         "module": "commonjs",
         "declaration": true,
-        "declarationDir": "src/ts/dts"
+        "declarationDir": "."
     },
     "include": [
-        "src/ts/*.ts"
+        "src/**/*.ts"
     ],
     "exclude": [
         "node_modules",
