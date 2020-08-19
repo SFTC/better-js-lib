@@ -1,1 +1,10 @@
 node_modules
+dist
+coverage
+
+.rpt2_cache
+.DS_Store
+.nyc_output
+
+!index.d.ts
+*.d.ts

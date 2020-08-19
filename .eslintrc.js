@@ -12,11 +12,19 @@ module.exports = {
     "parserOptions": {
         "sourceType": "module"
     },
+    "globals": {
+      "describe": true,
+      "it": true,
+    },
     "plugins": ["@typescript-eslint"],
     "rules": {
         "indent": [
             "error",
-            4
+            2
+        ],
+        "@typescript-eslint/indent": [
+          "error",
+          2
         ],
         "linebreak-style": [
             "error",

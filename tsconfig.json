@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "ESNext",
         "module": "commonjs",
         "declaration": true,
-        "declarationDir": "."
+        "declarationDir": ".",
+        "esModuleInterop": true,
     },
     "include": [
         "src/**/*.ts"
