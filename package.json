@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@js-lib/cli": "^1.6.0",
+    "@types/is": "0.0.21",
     "@types/lodash.clonedeep": "^4.5.6",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
@@ -62,6 +63,8 @@
     "typescript": "3.3.3333"
   },
   "dependencies": {
+    "dayjs": "^1.8.33",
+    "is_js": "^0.9.0",
     "lodash.clonedeep": "^4.5.0",
     "number-precision": "^1.5.0"
   }

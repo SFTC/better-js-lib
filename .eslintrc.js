@@ -18,26 +18,12 @@ module.exports = {
     },
     "plugins": ["@typescript-eslint"],
     "rules": {
-        "indent": [
-            "error",
-            2
-        ],
-        "@typescript-eslint/indent": [
-          "error",
-          2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
+        "indent": ["error", 2],
+        "@typescript-eslint/indent": ["error", 2, { SwitchCase: 0 }],
+        "@typescript-eslint/no-explicit-any": "off",
+        "linebreak-style": [ "error", "unix"],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
         "no-console": "off",
         "max-classes-per-file": ["error", 2],
     }
