@@ -62,7 +62,7 @@
     "source-map-support": "0.5.9",
     "ts-node": "7.0.1",
     "tslib": "1.9.3",
-    "typescript": "^3.9.7"
+    "typescript": "3.3.3333"
   },
   "dependencies": {
     "dayjs": "^1.8.33",
