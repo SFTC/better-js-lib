@@ -5,6 +5,7 @@
         "declaration": true,
         "declarationDir": ".",
         "esModuleInterop": true,
+        "resolveJsonModule": true,
     },
     "include": [
         "src/**/*.ts"

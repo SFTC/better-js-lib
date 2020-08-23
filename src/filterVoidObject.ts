@@ -1,9 +1,5 @@
 import is from 'is_js';
-
-/** 包括任意属性的对象 */
-interface AnyObject {
-  [propName: string]: any;
-}
+import { AnyObject } from './index';
 
 /** 包括任意值的数组 */
 type AnyArray = any[];

@@ -1,4 +1,5 @@
 var typescript = require('rollup-plugin-typescript2');
+var json = require('rollup-plugin-json');
 
 var pkg = require('../package.json');
 
@@ -14,11 +15,18 @@ var banner =
 `;
 
 function getCompiler(opt) {
-    opt = opt || {
-        tsconfigOverride: { compilerOptions : { module: 'ES2015' } }
-    }
+  opt = opt || {
+    tsconfigOverride: { compilerOptions : { module: 'ESNext' } }
+  };
 
-    return typescript(opt);
+  return {
+    ...typescript(opt),
+    ...json({
+      // for tree-shaking, properties will be declared as
+      // variables, using either `var` or `const`
+      preferConst: true, // Default: false
+    }),
+  };
 }
 
 exports.name = 'better-js-lib';

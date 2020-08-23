@@ -10,7 +10,7 @@ interface Point {
 /** 坐标系规则标准 */
 type PointRule = 'bd' | 'gg';
 
-function exchangeCoordinates(Coord: Point, origin: PointRule, format: PointRule): Point {
+export function exchangeCoordinates(Coord: Point, origin: PointRule, format: PointRule): Point {
   if (!Coord.lng || !Coord.lat) {
     throw new Error('坐标参数 参数不正确');
   }
