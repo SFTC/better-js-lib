@@ -1,10 +1,12 @@
-import is from 'is_js';
+import is from 'is';
 
-function isVoidObject(obj: any): boolean {
+/** 判断一个对象是否为空对象 */
+export function isVoidObject(obj: any): boolean {
   if (!is.object(obj)) {
     throw new Error('参数类型非object');
   } else {
     return is.empty(obj);
   }
 }
+
 export default isVoidObject;

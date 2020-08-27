@@ -1,7 +1,6 @@
 // rollup.config.js
 // commonjs
 var common = require('./rollup.js');
-var copy = require('rollup-plugin-copy');
 
 module.exports = {
   input: 'src/index.ts',
@@ -13,13 +12,6 @@ module.exports = {
     banner: common.banner,
   },
   plugins: [
-    common.getCompiler({
-      tsconfigOverride: { compilerOptions : { declaration: true, module: 'ESNext' } },
-      useTsconfigDeclarationDir: true,
-    }),
-    copy({
-      'src/assets': 'dist/assets',
-      verbose: true
-    })
+    ...common.getCompiler()
   ]
 };

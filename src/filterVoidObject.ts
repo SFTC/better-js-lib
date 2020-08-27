@@ -1,9 +1,10 @@
-import is from 'is_js';
+import is from 'is';
 import { AnyObject } from './index';
 
 /** 包括任意值的数组 */
 type AnyArray = any[];
 
+/** 过滤对象中的空值 */
 export function filterVoidObject(
   obj: AnyObject,
   isValid = function(value: any): boolean {

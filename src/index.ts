@@ -1,10 +1,9 @@
 import dayjs from 'dayjs';
-import is from 'is_js';
 
 export * from 'number-precision';
 
 export { dayjs };
-export { is };
+// export { is };
 
 export * from './check';
 export * from './deepCopy';
