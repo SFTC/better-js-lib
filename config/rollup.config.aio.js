@@ -2,8 +2,7 @@
 // umd
 var nodeResolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
-var { uglify } = require('rollup-plugin-uglify');
-console.log('uglify ---> ', uglify);
+import { terser } from "rollup-plugin-terser";
 
 var common = require('./rollup.js');
 
@@ -28,6 +27,6 @@ module.exports = {
       include: 'node_modules/**',
     }),
     ...common.getCompiler(),
-    (prod && uglify())
+    (prod && terser())
   ]
 };

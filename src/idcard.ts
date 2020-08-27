@@ -1,4 +1,3 @@
-// import curryRight from 'lodash.curryright';
 import { checkIDCard } from './check';
 import areaMap from './assets/areaCode.min.json';
 

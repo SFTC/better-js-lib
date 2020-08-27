@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-export * from 'number-precision';
+// export * from 'number-precision';
 
 export { dayjs };
 // export { is };

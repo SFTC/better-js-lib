@@ -1,6 +1,6 @@
-var typescript = require('rollup-plugin-typescript2');
+var typescript = require('@rollup/plugin-typescript');
+var babel = require('rollup-plugin-babel');
 var json = require('rollup-plugin-json');
-var copy = require('rollup-plugin-copy');
 
 var pkg = require('../package.json');
 
@@ -15,24 +15,17 @@ var banner =
  */
 `;
 
-function getCompiler(opt) {
-  opt = opt || {
-    tsconfigOverride: { compilerOptions : { declaration: true, module: 'ESNext' } },
-      typescript: require('typescript'),
-      objectHashIgnoreUnknownHack: true,
-      useTsconfigDeclarationDir: true,
-  };
-
+function getCompiler() {
   return [
-    typescript(opt),
+    typescript(),
+    babel({
+      exclude: 'node_modules/**',
+      extensions: ['.js', '.ts'],
+    }),
     json({
       // for tree-shaking, properties will be declared as
       // variables, using either `var` or `const`
       preferConst: true, // Default: false
-    }),
-    copy({
-      'src/assets': 'dist/assets',
-      verbose: true
     })
   ];
 }
