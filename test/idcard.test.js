@@ -143,7 +143,7 @@ describe('解析身份证号', function () {
 
   describe('其他 case', function() {
     it('110102199901018781 不是一个合法的身份证号，因为不是字符串类型', function () {
-      expect(new Idcard(110102199901018781n).getAllInfo()).to.equal(-1);
+      expect(new Idcard(110102199901018781).getAllInfo()).to.equal(-1);
     });
   });
 

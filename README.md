@@ -3,7 +3,7 @@
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bluescurry/better-js-lib/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/bluescurry/better-js-lib.svg?branch=master)](https://travis-ci.org/bluescurry/better-js-lib)
 [![Coveralls](https://img.shields.io/coveralls/bluescurry/better-js-lib.svg)](https://coveralls.io/github/bluescurry/better-js-lib)
-[![npm](https://img.shields.io/badge/npm-0.1.0-orange.svg)](https://www.npmjs.com/package/better-js-lib)
+[![npm](https://img.shields.io/badge/npm-2.0.0-orange.svg)](https://www.npmjs.com/package/better-js-lib)
 [![NPM downloads](http://img.shields.io/npm/dm/better-js-lib.svg?style=flat-square)](http://www.npmtrends.com/better-js-lib)
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/bluescurry/better-js-lib.svg)](http://isitmaintained.com/project/bluescurry/better-js-lib "Percentage of issues still open")
 
