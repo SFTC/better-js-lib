@@ -146,5 +146,4 @@ describe('解析身份证号', function () {
       expect(new Idcard(110102199901018781).getAllInfo()).to.equal(-1);
     });
   });
-
 });
