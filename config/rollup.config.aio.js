@@ -17,6 +17,7 @@ module.exports = {
     // legacy: true,
     name: common.name,
     banner: common.banner,
+    sourcemap: true
   },
   plugins: [
     nodeResolve({

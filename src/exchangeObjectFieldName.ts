@@ -1,4 +1,6 @@
-import { AnyObject, deepCopy } from './index';
+import deepCopy from 'lodash.clonedeep';
+import { AnyObject } from './index';
+
 
 /** 需要替换的对象属性名 */
 type ExchangeFields = {

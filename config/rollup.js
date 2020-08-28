@@ -1,5 +1,6 @@
 var typescript = require('@rollup/plugin-typescript');
-var babel = require('rollup-plugin-babel');
+var sourceMaps = require('rollup-plugin-sourcemaps');
+// var babel = require('rollup-plugin-babel');
 var json = require('rollup-plugin-json');
 
 var pkg = require('../package.json');
@@ -17,16 +18,20 @@ var banner =
 
 function getCompiler() {
   return [
-    typescript(),
-    babel({
+    typescript({
+      exclude: "node_modules/**",
+      typescript: require('typescript'),
+    }),
+    /* babel({
       exclude: 'node_modules/**',
       extensions: ['.js', '.ts'],
-    }),
+    }), */
     json({
       // for tree-shaking, properties will be declared as
       // variables, using either `var` or `const`
       preferConst: true, // Default: false
-    })
+    }),
+    sourceMaps(),
   ];
 }
 

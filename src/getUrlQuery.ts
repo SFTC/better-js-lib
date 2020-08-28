@@ -12,7 +12,7 @@ function getAllQueryJson(url: string): AnyObject {
     ret = {};
   if (arrUrl && arrUrl[1]) {
     var strPara = arrUrl[1],
-      result: RegExpExecArray;
+      result: RegExpExecArray | null;
     while ((result = regPara.exec(strPara)) != null) {
       ret[result[1]] = result[2];
     }

@@ -1,15 +1,27 @@
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-    },
-    "include": [
-        "src/**/*.ts"
+  "compilerOptions": {
+    /* 基础配置 */
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "esnext"
     ],
-    "exclude": [
-        "node_modules",
-        "**.d.ts"
-    ]
+    "removeComments": false,
+    "declaration": true,
+    "sourceMap": true,
+
+    /* 强类型检查配置 */
+    "strict": true,
+    "noImplicitAny": false,
+
+    /* 模块分析配置 */
+    "baseUrl": ".",
+    "outDir": "./lib",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src"
+  ]
 }

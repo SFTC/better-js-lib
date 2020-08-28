@@ -35,23 +35,6 @@ describe('解析身份证号', function () {
     });
   });
 
-  describe('从身份证号中得到籍贯（省市区）', function () {
-    it(
-      '"131002199408153611" 应该返回"{ province: "河北省", city: "廊坊市", district: "安次区" }"',
-      function () {
-        const area = {
-          province: '河北省',
-          city: '廊坊市',
-          district: '安次区'
-        };
-        expect(new Idcard('131002199408153611').getArea()).to.eql(area);
-      }
-    );
-    it('"110102199901018781" 不是一个合法的身份证号', function () {
-      expect(new Idcard('110102199901018781').getArea()).to.equal(-1);
-    });
-  });
-
   describe('从身份证号中得到性别', function () {
     it('"131002199408153611" 应该返回"男"', function () {
       expect(new Idcard('131002199408153611').getSex()).to.equal('男');
@@ -96,11 +79,6 @@ describe('解析身份证号', function () {
           day: '15'
         },
         age: age,
-        area: {
-          province: '河北省',
-          city: '廊坊市',
-          district: '安次区'
-        },
         sex: '男',
         animalSigns: '狗'
       };
@@ -116,11 +94,6 @@ describe('解析身份证号', function () {
           day: '15'
         },
         age: age,
-        area: {
-          province: '河北省',
-          city: '廊坊市',
-          district: '安次区'
-        },
         sex: '男',
         animalSigns: '狗'
       };

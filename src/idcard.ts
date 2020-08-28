@@ -1,5 +1,4 @@
 import { checkIDCard } from './check';
-import areaMap from './assets/areaCode.min.json';
 
 function curryRight(fn: any): any {
   var args = [].slice.call(arguments, 1);
@@ -142,47 +141,6 @@ export class Idcard {
     return age;
   }
   
-  /** 根据身份证信息获取籍贯（省市区） */
-  public getArea(): { province: string; city: string; district: string } | -1 {
-    // 校验过的身份证号
-    var proIdCard = this.processIdCard();
-  
-    if (!proIdCard) {
-      return -1;
-    }
-  
-    var province = (proIdCard as string).slice(0, 2); // 省 code
-    var city = (proIdCard as string).slice(2, 4); // 市 code
-    var district = (proIdCard as string).slice(4, 6); // 区 code
-  
-    var provinceChinese = ''; // 省 中文
-    if (areaMap[province] && areaMap[province].name) {
-      provinceChinese = areaMap[province].name;
-    } else {
-      return -1;
-    }
-  
-    var cityChinese = ''; // 市 中文
-    if (areaMap[province].city[city] && areaMap[province].city[city].name) {
-      cityChinese = areaMap[province].city[city].name;
-    } else {
-      return -1;
-    }
-  
-    var districtChinese = ''; // 区 中文
-    if (areaMap[province].city[city].district && areaMap[province].city[city].district[district]) {
-      districtChinese = areaMap[province].city[city].district[district];
-    } else {
-      return -1;
-    }
-  
-    return {
-      province: provinceChinese,
-      city: cityChinese,
-      district: districtChinese,
-    };
-  }
-  
   /** 根据身份证号获取性别 */
   public getSex(): string | -1 {
     // 校验过的身份证号
@@ -277,11 +235,6 @@ export class Idcard {
       day: string;
     } | -1;
     age: number;
-    area: -1 | {
-      province: string;
-      city: string;
-      district: string;
-    };
     sex: string | -1;
     animalSigns: string | -1; } {
     // 校验过的身份证号
@@ -294,7 +247,6 @@ export class Idcard {
     return {
       birthday: this.getBirthday(),
       age: this.getAge(),
-      area: this.getArea(),
       sex: this.getSex(),
       animalSigns: this.getAnimalSigns(),
     };

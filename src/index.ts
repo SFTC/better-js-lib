@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
 
-// export * from 'number-precision';
+export * from 'number-precision';
 
 export { dayjs };
-// export { is };
 
+export * from './is';
 export * from './check';
 export * from './deepCopy';
 export * from './exchangeCoordinates';

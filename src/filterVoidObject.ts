@@ -12,8 +12,8 @@ export function filterVoidObject(
   }
 ): AnyObject {
   //用于处理自循环对象
-  let oriObj = [],
-    newObj = [];
+  let oriObj: AnyObject[] = [],
+    newObj: AnyObject[] = [];
 
   function rec(_obj: AnyObject): AnyObject {
     if (!is.array(_obj) && !is.object(_obj)) return _obj;

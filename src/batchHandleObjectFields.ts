@@ -1,5 +1,10 @@
 import { AnyObject } from './index';
 
+interface CopyedObjsType {
+  target: AnyObject;
+  copyTarget: AnyObject;
+}
+
 /**
  * 对一个对象中指定字段进行批量处理，目前只支持处理值为基本数据类型的字段
  * @param {Object} target 目标对象
@@ -7,7 +12,7 @@ import { AnyObject } from './index';
  * @param {Function} handler 处理函数
  */
 export function batchHandleObject(target: any, handleArr: string[], handler: (arg0: any) => any): AnyObject {
-  let copyedObjs = []; //此数组解决了循环引用和相同引用的问题，它存放已经递归到的目标对象
+  let copyedObjs: CopyedObjsType[] = []; //此数组解决了循环引用和相同引用的问题，它存放已经递归到的目标对象
   function _deepCopy(target: AnyObject, needHandler = false): AnyObject {
     if (typeof target !== 'object' || !target) {
       return needHandler ? handler(target) : target;
