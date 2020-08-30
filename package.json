@@ -8,6 +8,7 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf ./lib",
+    "test:some": "cross-env NODE_ENV=test nyc mocha ./test/is.test.js",
     "test": "npm run lint && nyc mocha",
     "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts'",
@@ -54,6 +55,8 @@
     "eslint": "^5.15.1",
     "eslint-plugin-html": "^6.0.3",
     "expect.js": "0.3.1",
+    "foreach": "^2.0.5",
+    "make-generator-function": "^2.0.0",
     "mocha": "3.5.3",
     "mocha-jsdom": "^2.0.0",
     "nyc": "13.1.0",
@@ -68,6 +71,7 @@
     "rollup-plugin-terser": "^7.0.0",
     "rollup-plugin-typescript2": "^0.27.2",
     "source-map-support": "0.5.9",
+    "tape": "^5.0.1",
     "ts-node": "7.0.1",
     "tslib": "^2.0.1",
     "typescript": "^3.9.7"
