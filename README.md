@@ -9,6 +9,8 @@
 
 最好用的 `JS|TS` 第三方库脚手架
 
+[Docs](./doc/api.md)
+
 ## :star: 特性
 
 - 支持ES6+或TypeScript编写源码，编译生成生产代码
@@ -73,8 +75,7 @@ requirejs(['node_modules/better-js-lib/dist/index.aio.js'], function (base) {
 <script src="node_modules/better-js-lib/dist/index.aio.js"></script>
 ```
 
-## :bookmark_tabs: 文档
-[API](./doc/api.md)
+## :bookmark_tabs: [文档](./doc/api.md)
 
 ## :kissing_heart: 贡献者指南
 首次运行需要先安装依赖
