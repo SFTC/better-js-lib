@@ -1,0 +1,6 @@
+*.d.ts
+dist/
+lib/
+node_modules/
+public/
+config/

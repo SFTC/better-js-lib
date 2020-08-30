@@ -1,6 +1,6 @@
-var expect = require('expect.js');
+import expect from 'expect.js';
 
-var filterVoidObject = require('../src/filterVoidObject.js').default;
+import { filterVoidObject } from '../src/index';
 
 describe('过滤对象中的空值', function() {
   it('过滤空字符串', function () {

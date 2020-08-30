@@ -1,29 +1,30 @@
-# [better-js-lib](https://github.com/SFTC/better-js-lib)
+# [better-js-lib](https://github.com/bluescurry/better-js-lib)
+[![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bluescurry/better-js-lib/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/bluescurry/better-js-lib.svg?branch=master)](https://travis-ci.org/bluescurry/better-js-lib)
+[![Coveralls](https://img.shields.io/coveralls/bluescurry/better-js-lib.svg)](https://coveralls.io/github/bluescurry/better-js-lib)
+[![npm](https://img.shields.io/badge/npm-2.0.0-orange.svg)](https://www.npmjs.com/package/better-js-lib)
+[![NPM downloads](http://img.shields.io/npm/dm/better-js-lib.svg?style=flat-square)](http://www.npmtrends.com/better-js-lib)
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/bluescurry/better-js-lib.svg)](http://isitmaintained.com/project/bluescurry/better-js-lib "Percentage of issues still open")
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SFTC/better-js-lib/blob/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/better-js-lib.svg)](https://www.npmjs.com/package/better-js-lib)
-[![Build Status](https://travis-ci.org/SFTC/better-js-lib.svg?branch=feature-1.0.0)](https://travis-ci.org/SFTC/better-js-lib)
-[![Coverage Status](https://coveralls.io/repos/github/SFTC/better-js-lib/badge.svg?branch=feature-1.0.0)](https://coveralls.io/github/SFTC/better-js-lib?branch=feature-1.0.0)
-
-更好用的 `JS|TS` 业务函数库
+最好用的 `JS|TS` 第三方库脚手架
 
 [Docs](./doc/api.md)
 
 ## :star: 特性
 
 - 支持ES6+或TypeScript编写源码，编译生成生产代码
-- 第三方依赖自动注入（自动剔除第三方依赖无用代码tree shaking）
 - 多环境支持（支持浏览器原生，支持AMD，CMD，支持Webpack，Rollup，fis等，支持Node）
-- 集成单元测试环境（mocha）
-- 集成 coveralls 测试覆盖率
+- 集成[jsmini](https://github.com/jsmini)
+
+> 注意: 如果不同时使用 `export` 与 `export default` 可打开 `legacy模式`，`legacy模式` 下的模块系统可以兼容 `ie6-8`，见rollup配置文件
 
 ## :pill: 兼容性
-
 单元测试保证支持如下环境：
 
 | IE   | CH   | FF   | SF   | OP   | IOS  | Android   | Node  |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ----- |
-| 6+   | 29+ | 55+  | 9+   | 50+  | 9+   | 4+   | 6+ |
+| 6+   | 29+ | 55+  | 9+   | 50+  | 9+   | 4+   | 4+ |
 
 **注意：编译代码依赖ES5环境，对于ie6-8需要引入[es5-shim](http://github.com/es-shims/es5-shim/)才可以兼容，可以查看[demo/demo-global.html](./demo/demo-global.html)中的例子**
 
@@ -76,6 +77,7 @@ requirejs(['node_modules/better-js-lib/dist/index.aio.js'], function (base) {
 
 ## :bookmark_tabs: [文档](./doc/api.md)
 
+## :kissing_heart: 贡献者指南
 首次运行需要先安装依赖
 
 ```bash
@@ -108,10 +110,12 @@ $ npm run release
 $ npm publish
 ```
 
+## 贡献者列表
+
+[contributors](https://github.com/bluescurry/better-js-lib/graphs/contributors)
+
 ## :gear: 更新日志
 [CHANGELOG.md](./CHANGELOG.md)
 
 ## :airplane: 计划列表
 [TODO.md](./TODO.md)
-
-## :bulb: 谁在使用

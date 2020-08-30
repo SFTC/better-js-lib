@@ -1,6 +1,7 @@
-var expect = require('expect.js');
+import expect from 'expect.js';
 
-var exchangeCoordinates = require('../src/exchangeCoordinates.js').default;
+import { exchangeCoordinates } from '../src/index';
+
 describe('判断是否为空对象', function() {
   it('经纬度格式不正确', function () {
     try {

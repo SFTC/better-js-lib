@@ -1,10 +1,7 @@
-/* 校验字符串是否都是中文 */
-export function checkCnString(tempString) {
+/** 校验字符串是否都是中文 */
+export function checkCnString(tempString: string): boolean {
   var chineseReg = /^[\u4E00-\u9FA5]+$/;
-  if (chineseReg.test(tempString)) {
-    return true;
-  }
-  return false;
+  return chineseReg.test(tempString);
 }
 
 /**
@@ -12,7 +9,7 @@ export function checkCnString(tempString) {
  * @param {String} id 身份证号
  * @returns {Boolean} 检验结果
  */
-export function checkIDCard(id) {
+export function checkIDCard(id: string): boolean {
   var format = /^(([1][1-5])|([2][1-3])|([3][1-7])|([4][1-6])|([5][0-4])|([6][1-5])|([7][1])|([8][1-2]))\d{4}(([1][9]\d{2})|([2]\d{3}))(([0][1-9])|([1][0-2]))(([0][1-9])|([1-2][0-9])|([3][0-1]))\d{3}[0-9xX]$/;
   //号码规则校验
   if (!format.test(id)) {
@@ -20,30 +17,35 @@ export function checkIDCard(id) {
   }
   //区位码校验
   //出生年月日校验,前正则限制起始年份为1900;
-  var year = id.substr(6, 4), //身份证年
-    month = id.substr(10, 2), //身份证月
-    date = id.substr(12, 2), //身份证日
+  var year = +id.substr(6, 4), //身份证年
+    month = +id.substr(10, 2), //身份证月
+    date = +id.substr(12, 2), //身份证日
     time = Date.parse(month + '-' + date + '-' + year), //身份证日期时间戳date
-    now_time = Date.parse(new Date()), //当前时间戳
+    nowTime = Date.now(), //当前时间戳
     dates = (new Date(year, month, 0)).getDate(); //身份证当月天数
-  if (time > now_time || date > dates) {
+  if (time > nowTime || date > dates) {
     return false;
   }
   //校验码判断
-  var c = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2); //系数
-  var b = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'); //校验码对照表
-  var id_array = id.split('');
+  var c = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]; //系数
+  var b = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2']; //校验码对照表
+  var idArray = id.split('');
   var sum = 0;
   for (var k = 0; k < 17; k++) {
-    sum += parseInt(id_array[k]) * parseInt(c[k]);
+    sum += parseInt(idArray[k]) * c[k];
   }
-  if (id_array[17].toUpperCase() != b[sum % 11].toUpperCase()) {
+  if (idArray[17].toUpperCase() != b[sum % 11].toUpperCase()) {
     return false;
   }
   return true;
 }
 
-export function checkMail(mail) {
+/**
+ * 校验邮箱
+ * @param {string} mail 邮箱
+ * @returns {boolean} 校验结果
+ */
+export function checkMail(mail: string): boolean {
   /**
    * 规则如下：
    * 以大写字母[A-Z]、小写字母[a-z]、数字[0-9]、下滑线[_]、减号[-]、点号[.]、中文[\u4e00-\u9fa5]开头，并需要重复一次至多次[+]
@@ -55,7 +57,12 @@ export function checkMail(mail) {
   return reg.test(mail);
 }
 
-export function checkPhone(phone) {
+/**
+ * 校验手机号
+ * @param {string} phone 手机号
+ * @returns {boolean} 校验结果
+ */
+export function checkPhone(phone: string): boolean {
   /**
    * 规则如下：
    * 首位是必须是 1
@@ -70,7 +77,7 @@ export function checkPhone(phone) {
 /**
  * 这个方法用来校验 ——> 手机， 座机， 分机号码
  */
-export function checkTelephone(phoneNumber) {
+export function checkTelephone(phoneNumber: string): boolean {
   var isPhone = /^(0\d{2,3}-?)?\d{7,8}$/;
   var isExt = /^[48]00-?\d{3}-?\d{4}$/;
 

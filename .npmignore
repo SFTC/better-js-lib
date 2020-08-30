@@ -3,6 +3,13 @@ config
 demo
 src
 test
+coverage
+
+.DS_Store
+*.d.ts
+.nyc_output
+!index.d.ts
+.rpt2_cache
 .babelrc
 .editorconfig
 .eslintrc.js

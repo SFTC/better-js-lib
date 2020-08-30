@@ -22,16 +22,13 @@
     <script>
         var libs = {
             'expect.js': expect,
-            // js
-            '../src/index.js': window['js-lib']
-            // ts
-            // '../src/index.ts': window['js-lib']
+            '../src/index.ts': window['better-js-lib']
         };
         var require = function(path) {
             return libs[path];
         }
     </script>
-    <script src="../chCharacter.test.js"></script>
+    <script src="../test.js"></script>
     <script>
         mocha.run();
     </script>

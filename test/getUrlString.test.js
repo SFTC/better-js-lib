@@ -1,6 +1,6 @@
-var expect = require('expect.js');
+import expect from 'expect.js';
 
-var getUrlString = require('../src/getUrlString.js').default;
+import { getUrlString } from '../src/index';
 
 describe('将对象转换为url参数的字符串', function() {
 

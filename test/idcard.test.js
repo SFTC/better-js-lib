@@ -1,8 +1,9 @@
-var expect = require('expect.js');
+import expect from 'expect.js';
 
-var idcard = require('../src/idcard.js');
+import { Idcard } from '../src/index';
 
 describe('解析身份证号', function () {
+  var age = new Date().getFullYear() - 1994;
 
   describe('从身份证号中得到生日', function () {
     it(
@@ -14,52 +15,35 @@ describe('解析身份证号', function () {
           month: '08',
           day: '15'
         };
-        expect(idcard.getBirthday('131002199408153611')).to.eql(birthday);
+        expect(new Idcard('131002199408153611').getBirthday()).to.eql(birthday);
       }
     );
     it('"110102199901018781" 不是一个合法的身份证号', function () {
-      expect(idcard.getBirthday('110102199901018781')).to.equal(-1);
+      expect(new Idcard('110102199901018781').getBirthday()).to.equal(-1);
     });
   });
 
   describe('从身份证号中得到年龄', function () {
-    it('"131002199408153611" 应该返回"24"', function () {
-      expect(idcard.getAge('131002199408153611')).to.equal(24);
+    it(`"131002199408153611" 应该返回"${age}"`, function () {
+      expect(new Idcard('131002199408153611').getAge()).to.equal(age);
     });
-    it('设置了基准时间，"131002199408153611" 应该返回"24"', function () {
-      expect(idcard.getAge('131002199408153611', 1554090947763)).to.equal(24);
+    it(`设置了基准时间，"131002199408153611" 应该返回"${age}"`, function () {
+      expect(new Idcard('131002199408153611', 1554090947763).getAge()).to.equal(age);
     });
     it('"110102199901018781" 不是一个合法的身份证号', function () {
-      expect(idcard.getAge('110102199901018781')).to.equal(-1);
-    });
-  });
-
-  describe('从身份证号中得到籍贯（省市区）', function () {
-    it(
-      '"131002199408153611" 应该返回"{ province: "河北省", city: "廊坊市", district: "安次区" }"',
-      function () {
-        const area = {
-          province: '河北省',
-          city: '廊坊市',
-          district: '安次区'
-        };
-        expect(idcard.getArea('131002199408153611')).to.eql(area);
-      }
-    );
-    it('"110102199901018781" 不是一个合法的身份证号', function () {
-      expect(idcard.getArea('110102199901018781')).to.equal(-1);
+      expect(new Idcard('110102199901018781').getAge()).to.equal(-1);
     });
   });
 
   describe('从身份证号中得到性别', function () {
     it('"131002199408153611" 应该返回"男"', function () {
-      expect(idcard.getSex('131002199408153611')).to.equal('男');
+      expect(new Idcard('131002199408153611').getSex()).to.equal('男');
     });
     it('"110102199901018780" 应该返回"女"', function () {
-      expect(idcard.getSex('110102199901018780')).to.equal('女');
+      expect(new Idcard('110102199901018780').getSex()).to.equal('女');
     });
     it('"110102199901018781" 不是一个合法的身份证号', function () {
-      expect(idcard.getSex('110102199901018781')).to.equal(-1);
+      expect(new Idcard('110102199901018781').getSex()).to.equal(-1);
     });
   });
 
@@ -76,12 +60,12 @@ describe('解析身份证号', function () {
     var _length = animalSigns.length;
     while (++index < _length) {
       it('"' + testIdCard[index] + '" 应该返回 "' + animalSigns[index] + '"', (function (index) {
-        expect(idcard.getAnimalSigns(testIdCard[index])).to.equal(animalSigns[index]);
+        expect(new Idcard(testIdCard[index]).getAnimalSigns()).to.equal(animalSigns[index]);
       }).bind(null, index));
     }
 
     it('"110102199901018781" 不是一个合法的身份证号', function () {
-      expect(idcard.getAnimalSigns('110102199901018781')).to.equal(-1);
+      expect(new Idcard('110102199901018781').getAnimalSigns()).to.equal(-1);
     });
   });
 
@@ -94,16 +78,11 @@ describe('解析身份证号', function () {
           month: '08',
           day: '15'
         },
-        age: 24,
-        area: {
-          province: '河北省',
-          city: '廊坊市',
-          district: '安次区'
-        },
+        age: age,
         sex: '男',
         animalSigns: '狗'
       };
-      expect(idcard.idcard('131002199408153611')).to.eql(msgIdCard);
+      expect(new Idcard('131002199408153611').getAllInfo()).to.eql(msgIdCard);
     });
 
     it('"131002940815361" 应该返回完整的身份信息', function () {
@@ -114,36 +93,30 @@ describe('解析身份证号', function () {
           month: '08',
           day: '15'
         },
-        age: 24,
-        area: {
-          province: '河北省',
-          city: '廊坊市',
-          district: '安次区'
-        },
+        age: age,
         sex: '男',
         animalSigns: '狗'
       };
-      expect(idcard.idcard('131002940815361')).to.eql(msgIdCard);
+      expect(new Idcard('131002940815361').getAllInfo()).to.eql(msgIdCard);
     });
 
     it('"110102199901018781" 不是一个合法的身份证号', function () {
-      expect(idcard.idcard('110102199901018781')).to.equal(-1);
+      expect(new Idcard('110102199901018781').getAllInfo()).to.equal(-1);
     });
   });
 
   describe('"15位"身份证号转换为"18位"', function () {
     it('"131002940815361" 应该返回 "131002199408153611"', function () {
-      expect(idcard.IDCard15To18('131002940815361')).to.equal('131002199408153611');
+      expect(new Idcard('131002940815361').IDCard15To18()).to.equal('131002199408153611');
     });
     it('"1310029408153611" 应该返回 ""，因为不是"15位"', function () {
-      expect(idcard.IDCard15To18('1310029408153611')).to.equal('');
+      expect(new Idcard('1310029408153611').IDCard15To18()).to.equal('');
     });
   });
 
   describe('其他 case', function() {
     it('110102199901018781 不是一个合法的身份证号，因为不是字符串类型', function () {
-      expect(idcard.idcard(110102199901018781)).to.equal(-1);
+      expect(new Idcard(110102199901018781).getAllInfo()).to.equal(-1);
     });
   });
-
 });

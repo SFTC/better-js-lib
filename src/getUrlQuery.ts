@@ -1,9 +1,31 @@
+import { AnyObject } from './index';
+
+/**
+ * 从地址中解析出所有的参数
+ * @param {String} url 地址
+ * @return {Object} 参数对象
+ */
+function getAllQueryJson(url: string): AnyObject {
+  var regUrl = /^[^?]+\?([\w\W]+)$/,
+    regPara = /([^&=]+)=([\w\W]*?)(&|$|#)/g,
+    arrUrl = regUrl.exec(url),
+    ret = {};
+  if (arrUrl && arrUrl[1]) {
+    var strPara = arrUrl[1],
+      result: RegExpExecArray | null;
+    while ((result = regPara.exec(strPara)) != null) {
+      ret[result[1]] = result[2];
+    }
+  }
+  return ret;
+}
+
 /**
  * 解析URL传参
  * @param {Object} key
  * @param {String} [url] 可以通过传入 url 参数来获取指定 url 的参数
  */
-function getUrlQuery(key, url) {
+export function getUrlQuery(key: string, url: string): string | AnyObject | null {
   // 校验是否存在 url
   var urlFlag = url && typeof url === 'string';
 
@@ -40,25 +62,3 @@ function getUrlQuery(key, url) {
     return null;
   }
 }
-
-/**
- * 从地址中解析出所有的参数
- * @param {String} url 地址
- * @return {Object} 参数对象
- */
-function getAllQueryJson(url) {
-  var reg_url = /^[^?]+\?([\w\W]+)$/,
-    reg_para = /([^&=]+)=([\w\W]*?)(&|$|#)/g,
-    arr_url = reg_url.exec(url),
-    ret = {};
-  if (arr_url && arr_url[1]) {
-    var str_para = arr_url[1],
-      result;
-    while ((result = reg_para.exec(str_para)) != null) {
-      ret[result[1]] = result[2];
-    }
-  }
-  return ret;
-}
-
-export default getUrlQuery;

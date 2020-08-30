@@ -1,8 +1,8 @@
-getPointsDistance;
-var expect = require('expect.js');
+import expect from 'expect.js';
 
-var getPointsDistance = require('../src/getPointsDistance.js').default;
-describe('深度克隆', function() {
+import { getPointsDistance } from '../src/index';
+
+describe('计算两个坐标点之间的直线距离', function() {
   it('参数不正确', function () {
     try {
       expect(getPointsDistance());

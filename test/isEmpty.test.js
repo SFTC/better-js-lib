@@ -1,6 +1,6 @@
-var expect = require('expect.js');
+import expect from 'expect.js';
 
-var isEmpty = require('../src/isEmpty.js').default;
+import { isEmpty } from '../src/index';
 
 describe('判断是否为空', function() {
   it('判断空字符串', function () {

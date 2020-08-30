@@ -1,7 +1,7 @@
-var expect = require('expect.js');
-var jsdom = require('mocha-jsdom');
+import expect from 'expect.js';
+import jsdom from 'mocha-jsdom';
 
-var getUrlQuery = require('../src/getUrlQuery.js').default;
+import { getUrlQuery } from '../src/index';
 
 describe('url：http://localhost?name=zhangsan&age=25&phone=13888888888', function () {
 

@@ -1,6 +1,7 @@
-var expect = require('expect.js');
+import expect from 'expect.js';
 
-var isVoidObject = require('../src/isVoidObject.js').default;
+import { isVoidObject } from '../src/index';
+
 describe('判断是否为空对象', function() {
   it('参数不合法', function () {
     try {

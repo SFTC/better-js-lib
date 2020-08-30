@@ -1,6 +1,6 @@
-var expect = require('expect.js');
+import expect from 'expect.js';
 
-var hasEmoji = require('../src/hasEmoji.js').default;
+import { hasEmoji } from '../src/index';
 
 describe('判断是否包含emoji表情', function() {
   it('包含emoji表情的情况', function () {
