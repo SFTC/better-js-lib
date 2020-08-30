@@ -2,9 +2,9 @@
   "name": "better-js-lib",
   "version": "2.0.0",
   "description": "jslib最好用的js库脚手架",
-  "main": "dist/index.js",
-  "jsnext:main": "dist/index.esm.js",
-  "module": "dist/index.esm.js",
+  "main": "lib/index.js",
+  "jsnext:main": "lib/index.esm.js",
+  "module": "lib/index.esm.js",
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf ./lib",
@@ -26,7 +26,7 @@
     "url": "https://github.com/bluescurry/better-js-lib/issues"
   },
   "files": [
-    "/dist",
+    "/lib",
     "*.d.ts"
   ],
   "engines": {

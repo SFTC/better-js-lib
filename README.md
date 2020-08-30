@@ -33,7 +33,7 @@
 ```
 .
 ├── demo 使用demo
-├── dist 编译产出代码
+├── lib 编译产出代码
 ├── doc 项目文档
 ├── src 源代码目录
 ├── test 单元测试
@@ -64,7 +64,7 @@ import base from 'better-js-lib';
 如果你是requirejs环境
 
 ```js
-requirejs(['node_modules/better-js-lib/dist/index.aio.js'], function (base) {
+requirejs(['node_modules/better-js-lib/lib/index.aio.js'], function (base) {
     // xxx
 })
 ```
@@ -72,7 +72,7 @@ requirejs(['node_modules/better-js-lib/dist/index.aio.js'], function (base) {
 如果你是浏览器环境
 
 ```html
-<script src="node_modules/better-js-lib/dist/index.aio.js"></script>
+<script src="node_modules/better-js-lib/lib/index.aio.js"></script>
 ```
 
 ## :bookmark_tabs: [文档](./doc/api.md)
