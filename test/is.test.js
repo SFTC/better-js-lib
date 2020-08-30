@@ -7,11 +7,12 @@ import { is } from '../src/index';
 
 var toStr = Object.prototype.toString;
 
-describe('is.type', function () {
+describe('is.type/is.a', function () {
   it('boolean', function () {
     var booleans = [true, false];
     forEach(booleans, function (boolean) {
       expect(is.type(boolean, 'boolean')).to.be.ok();
+      expect(is.a(boolean, 'boolean')).to.be.ok();
     });
   });
 
@@ -20,10 +21,12 @@ describe('is.type', function () {
     expect(is.type(true, 'boolean')).to.be.ok();
     forEach(booleans, function (boolean) {
       expect(is.type(boolean, 'boolean')).to.be.ok();
+      expect(is.a(boolean, 'boolean')).to.be.ok();
     });
     var numbers = [1, 0 / 1, 0 / -1, NaN, Infinity, -Infinity];
     forEach(numbers, function (number) {
       expect(is.type(number, 'number')).to.be.ok();
+      expect(is.a(number, 'number')).to.be.ok();
     });
   });
 
@@ -31,6 +34,7 @@ describe('is.type', function () {
     var objects = [{}, null, new Date()];
     forEach(objects, function (object) {
       expect(is.type(object, 'object')).to.be.ok();
+      expect(is.a(object, 'object')).to.be.ok();
     });
   });
 
@@ -38,11 +42,13 @@ describe('is.type', function () {
     var strings = ['', 'abc'];
     forEach(strings, function (string) {
       expect(is.type(string, 'string')).to.be.ok();
+      expect(is.a(string, 'string')).to.be.ok();
     });
   });
 
   it('undefined', function () {
     expect(is.type(undefined, 'undefined')).to.be.ok();
+    expect(is.a(undefined, 'undefined')).to.be.ok();
   });
 });
 
@@ -229,7 +235,7 @@ describe('is.equal', function () {
     H.prototype = F.prototype;
 
     it('F and H have the same prototype', function() {
-      expect(F.prototype).to.not.equal(H.prototype);
+      expect(F.prototype).to.equal(H.prototype);
     });
     it('two functions are equal when the prototype is the same', function() {
       expect(is.equal(F, H)).to.be.ok();
@@ -313,18 +319,18 @@ describe('is.args', function () {
   });
 });
 
-describe('is.args.empty', function () {
+describe('is["args-empty"]', function () {
   it('empty array is not empty arguments', function() {
-    expect(is.args.empty([])).to.not.be.ok();
+    expect(is['args-empty']([])).to.not.be.ok();
   });
   (function () {
     it('empty arguments is empty arguments', function() {
-      expect(is.args.empty(arguments)).to.be.ok();
+      expect(is['args-empty'](arguments)).to.be.ok();
     });
   }());
   (function () {
     it('empty sliced arguments is not empty arguments', function() {
-      expect(is.args.empty(Array.prototype.slice.call(arguments))).to.not.be.ok();
+      expect(is['args-empty'](Array.prototype.slice.call(arguments))).to.not.be.ok();
     });
   }());
 });
@@ -340,18 +346,18 @@ describe('is.array', function () {
   }());
 });
 
-describe('is.array.empty', function () {
+describe('is["array-empty"]', function () {
   it('empty array is empty array', function() {
-    expect(is.array.empty([])).to.be.ok();
+    expect(is['array-empty']([])).to.be.ok();
   });
   (function () {
     it('empty arguments is not empty array', function() {
-      expect(is.array.empty(arguments)).to.not.be.ok();
+      expect(is['array-empty'](arguments)).to.not.be.ok();
     });
   }());
   (function () {
     it('empty sliced arguments is empty array', function() {
-      expect(is.array.empty(Array.prototype.slice.call(arguments))).to.be.ok();
+      expect(is['array-empty'](Array.prototype.slice.call(arguments))).to.be.ok();
     });
   }());
 });
@@ -423,50 +429,6 @@ describe('is.bool', function () {
   });
 });
 
-describe('is.false', function () {
-  var isFalse = is['false'];
-  it('false is false', function() {
-    expect(isFalse(false)).to.be.ok();
-  });
-  it('object false is false', function() {
-    expect(isFalse(Object(false))).to.be.ok();
-  });
-  it('true is not false', function() {
-    expect(isFalse(true)).to.not.be.ok();
-  });
-  it('undefined is not false', function() {
-    expect(isFalse()).to.not.be.ok();
-  });
-  it('null is not false', function() {
-    expect(isFalse(null)).to.not.be.ok();
-  });
-  it('empty string is not false', function() {
-    expect(isFalse('')).to.not.be.ok();
-  });
-});
-
-describe('is.true', function () {
-  var isTrue = is['true'];
-  it('true is true', function() {
-    expect(isTrue(true)).to.be.ok();
-  });
-  it('object true is true', function() {
-    expect(isTrue(Object(true))).to.be.ok();
-  });
-  it('false is not true', function() {
-    expect(isTrue(false)).to.not.be.ok();
-  });
-  it('undefined is not true', function() {
-    expect(isTrue()).to.not.be.ok();
-  });
-  it('null is not true', function() {
-    expect(isTrue(null)).to.not.be.ok();
-  });
-  it('empty string is not true', function() {
-    expect(isTrue('')).to.not.be.ok();
-  });
-});
-
 describe('is.date', function () {
   it('new Date is date', function() {
     expect(is.date(new Date())).to.be.ok();
@@ -491,12 +453,12 @@ describe('is.date', function () {
   });
 });
 
-describe('is.date.valid', function () {
+describe('is["date-valid"]', function () {
   it('new Date() is a valid date', function() {
-    expect(is.date.valid(new Date())).to.be.ok();
+    expect(is['date-valid'](new Date())).to.be.ok();
   });
   it('new Date("") is not a valid date', function() {
-    expect(is.date.valid(new Date(''))).to.not.be.ok();
+    expect(is['date-valid'](new Date(''))).to.not.be.ok();
   });
 });
 
@@ -707,21 +669,27 @@ describe('is.maximum', function () {
 
   var nanError = new TypeError('NaN is not a valid value');
   it('throws when first value is NaN', function() {
-    expect(is.maximum(NaN)).to.throwException(function(e) {
-      expect(e).to.be.equal(nanError);
-    });
+    try {
+      expect(is.maximum(NaN));
+    } catch (err) {
+      expect(err).to.eql(nanError);
+    }
   });
 
   var error = new TypeError('second argument must be array-like');
   it('throws when second value is not array-like', function() {
-    expect(is.maximum(2, null)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.maximum(2, null));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
   it('throws when second value is not array-like', function() {
-    expect(is.maximum(2, {})).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.maximum(2, {}));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
 });
 
@@ -741,21 +709,27 @@ describe('is.minimum', function () {
 
   var nanError = new TypeError('NaN is not a valid value');
   it('throws when first value is NaN', function() {
-    expect(is.minimum(NaN)).to.throwException(function(e) {
-      expect(e).to.be.equal(nanError);
-    });
+    try{
+      expect(is.minimum(NaN));
+    } catch (err) {
+      expect(err).to.eql(nanError);
+    }
   });
 
   var error = new TypeError('second argument must be array-like');
   it('throws when second value is not array-like', function() {
-    expect(is.minimum(2, null)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.minimum(2, null));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
   it('throws when second value is not array-like', function() {
-    expect(is.minimum(2, {})).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.minimum(2, {}));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
 });
 
@@ -871,14 +845,18 @@ describe('is.ge', function () {
 
   var error = new TypeError('NaN is not a valid value');
   it('throws when first value is NaN', function() {
-    expect(is.ge(NaN, 2)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.ge(NaN, 2));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
   it('throws when second value is NaN', function() {
-    expect(is.ge(2, NaN)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.ge(2, NaN));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
 });
 
@@ -910,14 +888,18 @@ describe('is.gt', function () {
 
   var error = new TypeError('NaN is not a valid value');
   it('throws when first value is NaN', function() {
-    expect(is.gt(NaN, 2)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.gt(NaN, 2));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
   it('throws when second value is NaN', function() {
-    expect(is.gt(2, NaN)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.gt(2, NaN));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
 });
 
@@ -948,14 +930,18 @@ describe('is.le', function () {
   });
   var error = new TypeError('NaN is not a valid value');
   it('throws when first value is NaN', function() {
-    expect(is.le(NaN, 2)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.le(NaN, 2));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
   it('throws when second value is NaN', function() {
-    expect(is.le(2, NaN)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.le(2, NaN));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
 });
 
@@ -987,14 +973,18 @@ describe('is.lt', function () {
 
   var error = new TypeError('NaN is not a valid value');
   it('throws when first value is NaN', function() {
-    expect(is.lt(NaN, 2)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.lt(NaN, 2));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
   it('throws when second value is NaN', function() {
-    expect(is.lt(2, NaN)).to.throwException(function(e) {
-      expect(e).to.be.equal(error);
-    });
+    try{
+      expect(is.lt(2, NaN));
+    } catch (err) {
+      expect(err).to.eql(error);
+    }
   });
 });
 
@@ -1002,83 +992,113 @@ describe('is.within', function () {
   describe('throws on NaN', function () {
     var nanError = new TypeError('NaN is not a valid value');
     it('throws when first value is NaN', function() {
-      expect(is.within(NaN, 0, 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(nanError);
-      });
+      try{
+        expect(is.within(NaN, 0, 0));
+      } catch (err) {
+        expect(err).to.eql(nanError);
+      }
     });
     it('throws when second value is NaN', function() {
-      expect(is.within(0, NaN, 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(nanError);
-      });
+      try{
+        expect(is.within(0, NaN, 0));
+      } catch (err) {
+        expect(err).to.eql(nanError);
+      }
     });
     it('throws when third value is NaN', function() {
-      expect(is.within(0, 0, NaN)).to.throwException(function(e) {
-        expect(e).to.be.equal(nanError);
-      });
+      try{
+        expect(is.within(0, 0, NaN));
+      } catch (err) {
+        expect(err).to.eql(nanError);
+      }
     });
   });
 
   describe('throws on non-number', function () {
     var error = new TypeError('all arguments must be numbers');
     it('throws when first value is string', function() {
-      expect(is.within('', 0, 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within('', 0, 0));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when second value is string', function() {
-      expect(is.within(0, '', 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(0, '', 0));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when third value is string', function() {
-      expect(is.within(0, 0, '')).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(0, 0, ''));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when first value is object', function() {
-      expect(is.within({}, 0, 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within({}, 0, 0));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when second value is object', function() {
-      expect(is.within(0, {}, 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(0, {}, 0));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when third value is object', function() {
-      expect(is.within(0, 0, {})).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(0, 0, {}));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when first value is null', function() {
-      expect(is.within(null, 0, 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(null, 0, 0));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when second value is null', function() {
-      expect(is.within(0, null, 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(0, null, 0));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when third value is null', function() {
-      expect(is.within(0, 0, null)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(0, 0, null));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when first value is undefined', function() {
-      expect(is.within(undefined, 0, 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(undefined, 0, 0));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when second value is undefined', function() {
-      expect(is.within(0, undefined, 0)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(0, undefined, 0));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
     it('throws when third value is undefined', function() {
-      expect(is.within(0, 0, undefined)).to.throwException(function(e) {
-        expect(e).to.be.equal(error);
-      });
+      try{
+        expect(is.within(0, 0, undefined));
+      } catch (err) {
+        expect(err).to.eql(error);
+      }
     });
   });
 
