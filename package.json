@@ -49,7 +49,7 @@
     "expect.js": "0.3.1",
     "foreach": "^2.0.5",
     "make-generator-function": "^2.0.0",
-    "mocha": "3.5.3",
+    "mocha": "^8.1.3",
     "mocha-jsdom": "^2.0.0",
     "nyc": "13.1.0",
     "rimraf": "2.6.2",
