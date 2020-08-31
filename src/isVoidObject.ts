@@ -1,4 +1,4 @@
-import is from 'is';
+import is from './is';
 
 /** 判断一个对象是否为空对象 */
 export function isVoidObject(obj: any): boolean {

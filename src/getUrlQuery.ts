@@ -62,3 +62,5 @@ export function getUrlQuery(key: string, url: string): string | AnyObject | null
     return null;
   }
 }
+
+export default getUrlQuery;

@@ -1,7 +1,9 @@
 import expect from 'expect.js';
 import dayjs from 'dayjs';
 
-import { formatTimeNum, formatDate, formatSeconds, getDayZeroTm, dayjs as fnDayjs } from '../src/index';
+import { formatDate } from '../src/index';
+
+const { formatTimeNum, formate, formatSeconds, getDayZeroTm, dayjs: fnDayjs } = formatDate;
 
 describe('formatTimeNum 方法会将 10 以下的数字回转换成一个在数字前面加 0 的字符串', function () {
   for (var i = 0; i < 10; i++) {
@@ -18,7 +20,7 @@ describe('formatTimeNum 方法会将 10 以下的数字回转换成一个在数�
 
 describe('使用 format 格式化时间', function() {
   it('输入 format(new Date("2019-01-01 08:00:00"), "YYYY-MM-DD HH:mm:ss") 会输出 2019-01-01 08:00:00', function () {
-    expect(formatDate(new Date('2019-01-01 08:00:00'), 'YYYY-MM-DD HH:mm:ss')).to.equal('2019-01-01 08:00:00');
+    expect(formate(new Date('2019-01-01 08:00:00'), 'YYYY-MM-DD HH:mm:ss')).to.equal('2019-01-01 08:00:00');
   });
 });
 

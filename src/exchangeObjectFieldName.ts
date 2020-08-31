@@ -29,3 +29,5 @@ export const exchangeObjectFieldName = (obj: AnyObject, exchangeFields: Exchange
   });
   return newObj;
 };
+
+export default exchangeObjectFieldName;

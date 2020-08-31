@@ -1,6 +1,8 @@
 import expect from 'expect.js';
 
-import { checkCnString, checkIDCard, checkMail, checkPhone, checkTelephone } from '../src/index';
+import { check } from '../src/index';
+
+const { checkCnString, checkIDCard, checkMail, checkPhone, checkTelephone } = check;
 
 describe('校验工具', function() {
   describe('校验字符串是否都是中文', function () {

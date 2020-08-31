@@ -12,3 +12,5 @@ export function getArrIntersection(): any[] {
     return intersect(prev,cur);
   });
 }
+
+export default getArrIntersection;
