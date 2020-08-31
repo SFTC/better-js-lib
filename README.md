@@ -1,21 +1,21 @@
-# [better-js-lib](https://github.com/bluescurry/better-js-lib)
+# [better-js-lib](https://github.com/SFTC/better-js-lib)
 [![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bluescurry/better-js-lib/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/bluescurry/better-js-lib.svg?branch=master)](https://travis-ci.org/bluescurry/better-js-lib)
-[![Coveralls](https://img.shields.io/coveralls/bluescurry/better-js-lib.svg)](https://coveralls.io/github/bluescurry/better-js-lib)
-[![npm](https://img.shields.io/badge/npm-2.0.0-orange.svg)](https://www.npmjs.com/package/better-js-lib)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SFTC/better-js-lib/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/SFTC/better-js-lib.svg?branch=master)](https://travis-ci.org/SFTC/better-js-lib)
+[![Coveralls](https://img.shields.io/coveralls/SFTC/better-js-lib.svg)](https://coveralls.io/github/SFTC/better-js-lib)
+[![npm](http://img.shields.io/npm/v/better-js-lib.svg?style=flat-square)](https://www.npmjs.com/package/better-js-lib)
 [![NPM downloads](http://img.shields.io/npm/dm/better-js-lib.svg?style=flat-square)](http://www.npmtrends.com/better-js-lib)
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/bluescurry/better-js-lib.svg)](http://isitmaintained.com/project/bluescurry/better-js-lib "Percentage of issues still open")
 
-最好用的 `JS|TS` 第三方库脚手架
+最好用的 `TS` 函数库
 
 [Docs](./doc/api.md)
 
 ## :star: 特性
 
-- 支持ES6+或TypeScript编写源码，编译生成生产代码
-- 多环境支持（支持浏览器原生，支持AMD，CMD，支持Webpack，Rollup，fis等，支持Node）
-- 集成[jsmini](https://github.com/jsmini)
+- 使用 typescript 编写，提供更好的代码提示和类型检查
+- 多环境支持（支持浏览器原生，支持AMD，CMD，支持Node）
+- tree-shaking 支持
+- 持续更新，欢迎 issue ~
 
 > 注意: 如果不同时使用 `export` 与 `export default` 可打开 `legacy模式`，`legacy模式` 下的模块系统可以兼容 `ie6-8`，见rollup配置文件
 
@@ -52,13 +52,15 @@ $ npm install --save better-js-lib
 如果你是node环境
 
 ```js
-var base = require('better-js-lib');
+var utils = require('better-js-lib');
 ```
 
 如果你是webpack等环境
 
 ```js
-import base from 'better-js-lib';
+import utils from 'better-js-lib';
+// 按需引入函数
+import { is } from 'better-js-lib';
 ```
 
 如果你是requirejs环境
@@ -112,7 +114,7 @@ $ npm publish
 
 ## 贡献者列表
 
-[contributors](https://github.com/bluescurry/better-js-lib/graphs/contributors)
+[contributors](https://github.com/SFTC/better-js-lib/graphs/contributors)
 
 ## :gear: 更新日志
 [CHANGELOG.md](./CHANGELOG.md)
