@@ -24,7 +24,7 @@
 
 | IE   | CH   | FF   | SF   | OP   | IOS  | Android   | Node  |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ----- |
-| 6+   | 29+ | 55+  | 9+   | 50+  | 9+   | 4+   | 4+ |
+| 6+   | 29+ | 55+  | 9+   | 50+  | 9+   | 4+   | 10+ |
 
 **注意：编译代码依赖ES5环境，对于ie6-8需要引入[es5-shim](http://github.com/es-shims/es5-shim/)才可以兼容，可以查看[demo/demo-global.html](./demo/demo-global.html)中的例子**
 
@@ -33,7 +33,7 @@
 ```
 .
 ├── demo 使用demo
-├── dist 编译产出代码
+├── lib 编译产出代码
 ├── doc 项目文档
 ├── src 源代码目录
 ├── test 单元测试
@@ -64,7 +64,7 @@ import base from 'better-js-lib';
 如果你是requirejs环境
 
 ```js
-requirejs(['node_modules/better-js-lib/dist/index.aio.js'], function (base) {
+requirejs(['node_modules/better-js-lib/lib/index.aio.js'], function (base) {
     // xxx
 })
 ```
@@ -72,7 +72,7 @@ requirejs(['node_modules/better-js-lib/dist/index.aio.js'], function (base) {
 如果你是浏览器环境
 
 ```html
-<script src="node_modules/better-js-lib/dist/index.aio.js"></script>
+<script src="node_modules/better-js-lib/lib/index.aio.js"></script>
 ```
 
 ## :bookmark_tabs: [文档](./doc/api.md)

@@ -1,6 +1,6 @@
 import expect from 'expect.js';
 
-import { batchHandleObject } from '../src/index';
+import { batchHandleObjectFields } from '../src/index';
 
 describe('对一个对象中指定字段进行批量处理', function() {
   it('批量处理金额，除以100', function () {
@@ -12,7 +12,7 @@ describe('对一个对象中指定字段进行批量处理', function() {
       obj: { value: '123' },
       arr: [1, 2, 3]
     };
-    const processData = batchHandleObject(data, ['price01', 'price02', 'price03'], (value) => value / 100);
+    const processData = batchHandleObjectFields(data, ['price01', 'price02', 'price03'], (value) => value / 100);
     expect(processData).to.eql({
       price01: 100,
       price02: 100,
@@ -32,7 +32,7 @@ describe('对一个对象中指定字段进行批量处理', function() {
       obj: { value: '123' },
       arr: [1, 2, 3]
     };
-    const processData = batchHandleObject(data, ['price01', 'price02', 'price03'], (value) => `$${value}`);
+    const processData = batchHandleObjectFields(data, ['price01', 'price02', 'price03'], (value) => `$${value}`);
     expect(processData).to.eql({
       price01: '$10000',
       price02: '$10000',

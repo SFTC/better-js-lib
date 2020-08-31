@@ -24,3 +24,5 @@ const Iterator = (value: AnyObject, newKey: string, oldKey: string, isDelete: bo
  */
 export const exchangeTreeFieldName = (arr: any[], newKey: string, oldKey: string, isDelete: boolean): any[] =>
   arr.map((item): AnyObject => Iterator(item, newKey, oldKey, isDelete));
+
+export default exchangeTreeFieldName;

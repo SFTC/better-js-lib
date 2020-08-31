@@ -13,3 +13,5 @@ export function getPointsDistance(sLat: number, sLng: number, eLat: number, eLng
   s = Math.round(s * 10000) / 10000;
   return s;
 }
+
+export default getPointsDistance;

@@ -78,7 +78,7 @@ interface IsType {
   lt: (value: number, other: number) => boolean;
   /** 判断 value 是否位于 [start, finish] 区间内 */
   within: (value: number, start: number, finish: number) => boolean;
-  /** 判断 value 是否是非基本数据类型 */
+  /** 判断 value 是否是基本数据类型 */
   primitive: (value: any) => boolean;
   /** 判断 value 是否是 hash */
   hash: (value: any) => boolean;
@@ -317,3 +317,5 @@ export const is: IsType = {
   // eslint-disable-next-line valid-typeof
   bigint:(value: any): boolean => typeof BigInt === 'function' && toStr.call(value) === '[object BigInt]' && typeof bigIntValueOf.call(value) === 'bigint'
 };
+
+export default is;

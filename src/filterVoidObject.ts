@@ -1,4 +1,4 @@
-import is from 'is';
+import is from './is';
 import { AnyObject } from './index';
 
 /** 包括任意值的数组 */
@@ -46,3 +46,5 @@ export function filterVoidObject(
   }
   return rec(obj);
 }
+
+export default filterVoidObject;

@@ -19,7 +19,7 @@
     * [encoded binary](#encoded-binary)
     * [Symbols](#symbols)
     * [BigInts](#bigints)
-  * [Utils.tree - *全局替换树形结构数据的某个字段，并且在对应二级children数组上添加“全部”的选项*](#utilstree)
+  * [Utils.exchangeTreeFieldName - *全局替换树形结构数据的某个字段，并且在对应二级children数组上添加“全部”的选项*](#utilsexchangetreefieldname)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-1)
   * [Utils.check - *检验各类信息*](#utilscheck)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-2)
@@ -56,27 +56,26 @@
       * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-16)
       * [Utils.formatDate.dayjs](#utilsformatdatedayjs)
       * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-17)
+  * [Utils.batchHandleObjectFields - *对一个对象中指定字段进行批量处理*](#utilsbatchhandleobjectfields)
+    * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-18)
+  * [Utils.exchangeObjectFieldName - *替换一个对象中一些指定属性的属性名*](#utilsexchangeobjectfieldname)
+    * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-19)
 
 ## Utils.idcard
 
 根据身份证号获取到一些个人信息
 
-通过这个方式可以从身份证号中提取到这个人的籍贯、生日、年龄和生肖
+通过这个方式可以从身份证号中提取到这个人、生日、年龄和生肖
 
 - param {string} card 身份证号
-- return {object} 个人信息，包括籍贯、生日、年龄和生肖
 
 ### 例子🌰
 
 ```js
-Utils.idcard.idcard('131002199408153611');
+import { Idcard } from 'better-js-lib';
+var idcard = new Idcard('110102199901018781');
 /*
   {
-    place: {
-      province: '河北省',
-      city: '廊坊市',
-      district: '安次区',
-    },
     birthday: {
       birthday: "1994/08/15",
       year: "1994",
@@ -84,15 +83,16 @@ Utils.idcard.idcard('131002199408153611');
       day: "15"
     },
     age: '24',
+    sex: '男',
     animalSigns: '狗'
   }
 */
 
-Utils.idcard.IDCard15To18('131002940815361'); // 131002199408153611
-Utils.idcard.getAge('131002199408153611'); // '24'
-Utils.idcard.getAge('131002199408153611', 1554090947763); // '24'，可以通过设置第二个参数改变对比年龄的基准时间
-Utils.idcard.getAnimalSigns('131002199408153611'); // '狗'
-Utils.idcard.getBirthday('131002199408153611');
+idcard.IDCard15To18('131002940815361'); // 131002199408153611
+idcard.getAge('131002199408153611'); // '24'
+idcard.getAge('131002199408153611', 1554090947763); // '24'，可以通过设置第二个参数改变对比年龄的基准时间
+idcard.getAnimalSigns('131002199408153611'); // '狗'
+idcard.getBirthday('131002199408153611');
 /*
 {
   birthday: "1994/08/15",
@@ -101,18 +101,11 @@ Utils.idcard.getBirthday('131002199408153611');
   day: "15"
 }
 */
-Utils.idcard.getArea('131002199408153611');
-/*
-{
-  province: '河北省',
-  city: '廊坊市',
-  district: '安次区',
-}
-*/
 ```
 
 可以通过 idcard 方法获取身份证号相关的全部信息，也可以通过单独的方法获取指定信息
-注：如果传入身份证号的格式不对，以上方法统一返回数字 -1；请用 -1 判断身份证格式是否合法，没必要在获取身份证号信息之前自己写方法校验是否合法
+
+*注：如果传入身份证号的格式不对，以上方法统一返回数字 -1；请用 -1 判断身份证格式是否合法，没必要在获取身份证号信息之前自己写方法校验是否合法*
 
 [:top:](#文档)
 
@@ -130,30 +123,23 @@ Utils.idcard.getArea('131002199408153611');
  - ``is.equal`` (value, other) - 校验 value 和 other 是否相等，包括基本数据类型、函数、日期、数组、对象的深层对比
  - ``is.hosted`` (value, host) - 校验 对象 `hosted` 的属性 `value` 是否是 hosted(包括除基本数据类型之外的对象数据类型)
  - ``is.instance`` (value, constructor) - 校验 value 是否是 constructor 的实例化对象
- - ``is.instanceof`` (value, constructor) - **已废弃**，因为在 ES3 及以后的浏览器环境 "instanceof" 成为一个关键字
  - ``is.nil`` (value) - 校验 value 的数据类型是否是 null
- - ``is.null`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "null" 成为一个关键字
  - ``is.undef`` (value) - 校验 value 的数据类型是否是 undefined
- - ``is.undefined`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "undefined" 成为一个关键字
 
 ### arguments
 
  - ``is.args`` (value) - 校验 value 的数据类型是否是参数数组
- - ``is.arguments`` (value) - **已废弃**，因为 "arguments" 是一个关键字deprecated
- - ``is.args.empty`` (value) - 校验 value 是否是一个空的参数数组
+ - ``is['args-empty']`` (value) - 校验 value 是否是一个空的参数数组
 
 ### array
 
  - ``is.array`` (value) - 校验 value 的数据类型是否是数组
- - ``is.array.empty`` (value) - 校验 value 是否是一个空的数组
+ - ``is['array-empty']`` (value) - 校验 value 是否是一个空的数组
  - ``is.arraylike`` (value) - 校验 value 是否是一个类数组
 
 ### boolean
 
  - ``is.bool`` (value) - 校验 value 的数据类型是否是布尔类型
- - ``is.boolean`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "boolean" 成为一个关键字
- - ``is.false`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "false" 成为一个关键字
- - ``is.true`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "true" 成为一个关键字
 
 ### date
 
@@ -170,7 +156,6 @@ Utils.idcard.getArea('131002199408153611');
 ### function
 
  - ``is.fn`` (value) - 校验 value 的数据类型是否是函数类型(包括 `Function`、`GeneratorFunction`、`AsyncFunction`)
- - ``is.function`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "function" 成为一个关键字
 
 ### number
 
@@ -179,7 +164,6 @@ Utils.idcard.getArea('131002199408153611');
  - ``is.decimal`` (value) - 校验 value 是否为小数
  - ``is.divisibleBy`` (value, n) - 校验 value 是否可以被整除
  - ``is.integer`` (value) - 校验 value 是否为整数
- - ``is.int`` (value) - **已废弃**，因为在 ES3 及以后的浏览器环境 "int" 成为一个关键字
  - ``is.maximum`` (value, others) - 判断 value 是否是 `others`数组中最大的
  - ``is.minimum`` (value, others) - 判断 value 是否是 `others`数组中最小的
  - ``is.nan`` (value) - 判断 value 是否是 NaN
@@ -216,13 +200,19 @@ Utils.idcard.getArea('131002199408153611');
 
  - ``is.bigint`` (value) - 校验 value 的数据类型是否是 ES-提议的 bigint 类型
 
-更多 API 请参考：[is](https://github.com/enricomarino/is)
+
+### 例子🌰
+
+```js
+import { is } from 'better-js-lib';
+is.string('123'); // true
+```
 
 [:top:](#文档)
 
 ---
 
-## Utils.tree
+## Utils.exchangeTreeFieldName
 
 全局替换树形结构数据的某个字段，并且在对应二级children数组上添加“全部”的选项
 
@@ -235,6 +225,7 @@ Utils.idcard.getArea('131002199408153611');
 ### 例子🌰
 
 ```js
+import { exchangeTreeFieldName } from 'better-js-lib';
 const arr = [
   {
     "dept_code":"001",
@@ -275,7 +266,7 @@ const arr = [
     ]
   }
 ];
-Utils.tree(arr, 'title', 'dept_name', false);
+exchangeTreeFieldName(arr, 'title', 'dept_name', false);
 /*
 [
   {
@@ -340,21 +331,23 @@ Utils.tree(arr, 'title', 'dept_name', false);
 ### 例子🌰
 
 ```js
+import { check } from 'better-js-lib';
+
 /* 校验字符串是否都是中文 */
-Utils.check.checkCnString('这是一段中文'); // true
+check.checkCnString('这是一段中文'); // true
 
 /* 校验"身份证号"是否合法，只支持校验"18位"身份证 */
-/* "15位"身份证号请通过 Utils.idcard.IDCard15To18 方法转成"18位"后再校验 */
-Utils.check.checkIDCard('110102198401015378'); // true
+/* "15位"身份证号请通过 idcard.IDCard15To18 方法转成"18位"后再校验 */
+check.checkIDCard('110102198401015378'); // true
 
 /* 校验"邮箱"是否合法 */
-Utils.check.checkMail('13888888888@163.com'); // true
+check.checkMail('13888888888@163.com'); // true
 
 /* 校验"手机号"是否合法 */
-Utils.check.checkPhone('13888888888'); // true
+check.checkPhone('13888888888'); // true
 
 /* 校验"手机， 座机， 分机号码"是否合法 */
-Utils.check.checkPhone('13888888888'); // true
+check.checkPhone('13888888888'); // true
 ```
 [:top:](#文档)
 
@@ -371,6 +364,7 @@ Utils.check.checkPhone('13888888888'); // true
 ### 例子🌰
 
 ```js
+import { getUrlQuery } from 'better-js-lib';
 // url: http://localhost?name=zhangsan&age=25&phone=13888888888
 getUrlQuery();
 /*
@@ -401,6 +395,7 @@ getUrlQuery('sex'); // null
 ### 例子🌰
 
 ```js
+import { getUrlString } from 'better-js-lib';
 getUrlString({ name: "zhangsan", age: "25", phone: 13888888888 }); // name=zhangsan&age=25&phone=13888888888
 
 getUrlString({ name: "zhangsan", age: "25", phone: 13888888888 }, { hasPrefix: true }); // ?name=zhangsan&age=25&phone=13888888888
@@ -425,7 +420,8 @@ getUrlString({ person: { name: "zhangsan", age: "25" }, auth: [1, 2, 3] }); // p
 ### 例子🌰
 
 ```js
-Utils.filterVoidObject({
+import { filterVoidObject } from 'better-js-lib';
+filterVoidObject({
   a: 1,
   b: null,
   c: undefined,
@@ -452,10 +448,14 @@ Utils.filterVoidObject({
 - return {Boolean} 是否为空对象
 
 ```js
-Utils.isVoidObject({});
+import { isVoidObject } from 'better-js-lib';
+isVoidObject({});
 /* true */
 
-Utils.isVoidObject({a: 1});
+isVoidObject({a: 1});
+/* false */
+
+isVoidObject('123'); // Error('参数类型非object')
 /* false */
 ```
 
@@ -473,9 +473,10 @@ Utils.isVoidObject({a: 1});
 ### 例子🌰
 
 ```js
-Utils.hasEmoji('Unicorn 🦄'); // true
+import { hasEmoji } from 'better-js-lib';
+hasEmoji('Unicorn 🦄'); // true
 
-Utils.hasEmoji('cat'); // false
+hasEmoji('cat'); // false
 ```
 
 [:top:](#文档)
@@ -492,10 +493,11 @@ Utils.hasEmoji('cat'); // false
 ### 例子🌰
 
 ```js
-Utils.getArrIntersection([1, 2], [1, 2, 4, 5], [2, 4, 6]);
+import { getArrIntersection } from 'better-js-lib';
+getArrIntersection([1, 2], [1, 2, 4, 5], [2, 4, 6]);
 /* [2] */
 
-Utils.getArrIntersection([1, 2], [1, 2, 4, 5], [3, 4, 6]);
+getArrIntersection([1, 2], [1, 2, 4, 5], [3, 4, 6]);
 /* [] */
 ```
 
@@ -521,6 +523,7 @@ NP.round(num, ratio)               // 为 num 保留 ratio 位小数
 ### 例子🌰
 
 ```js
+import { NP } from 'better-js-lib';
 NP.strip(0.09999999999999998); // = 0.1
 NP.plus(0.1, 0.2);             // = 0.3, not 0.30000000000000004
 NP.plus(2.3, 2.4);             // = 4.7, not 4.699999999999999
@@ -553,13 +556,14 @@ NP.enableBoundaryChecking(false); // default param is true
 ### 例子🌰
 
 ```js
+import { deepCopy } from 'better-js-lib';
 var obj = {
   key: {
     name: 'person'
   }
 };
 
-var obj_copy = Utils.deepCopy(obj);
+var obj_copy = deepCopy(obj);
 obj_copy.key.name = 'person_copy';
 
 obj.key.name; // 'person'
@@ -579,8 +583,9 @@ obj.key.name; // 'person'
 ### 例子🌰
 
 ```js
-Utils.isEmpty(null); // true
-Utils.isEmpty('this is a string'); // false
+import { isEmpty } from 'better-js-lib';
+isEmpty(null); // true
+isEmpty('this is a string'); // false
 ```
 
 [:top:](#文档)
@@ -600,7 +605,8 @@ Utils.isEmpty('this is a string'); // false
 ### 例子🌰
 
 ```js
-Utils.getPointsDistance(40, 166, 40, 167); // 118.1
+import { getPointsDistance } from 'better-js-lib';
+getPointsDistance(40, 166, 40, 167); // 118.1
 ```
 
 [:top:](#文档)
@@ -619,7 +625,8 @@ Utils.getPointsDistance(40, 166, 40, 167); // 118.1
 ### 例子🌰
 
 ```js
-Utils.exchangeCoordinates({ lng: 123, lat: 45 }, 'bd', 'gg'); // { lng: 123, lat: 45 }
+import { exchangeCoordinates } from 'better-js-lib';
+exchangeCoordinates({ lng: 123, lat: 45 }, 'bd', 'gg'); // { lng: 123, lat: 45 }
 ```
 
 [:top:](#文档)
@@ -637,8 +644,9 @@ Utils.exchangeCoordinates({ lng: 123, lat: 45 }, 'bd', 'gg'); // { lng: 123, lat
 ### 例子🌰
 
 ```js
-Utils.formatDate.formatTimeNum(6); // "06"
-Utils.formatDate.formatTimeNum(12); // "12"
+import { formatDate } from 'better-js-lib';
+formatDate.formatTimeNum(6); // "06"
+formatDate.formatTimeNum(12); // "12"
 ```
 
 ### Utils.formatDate.format
@@ -652,10 +660,11 @@ Utils.formatDate.formatTimeNum(12); // "12"
 ### 例子🌰
 
 ```js
-Utils.formatDate.format('2019-01-25', '[YYYY] YYYY-MM-DDTHH:mm:ssZ[Z]'); // 'YYYY 2019-01-25T00:00:00-02:00Z'
+import { formatDate } from 'better-js-lib';
+formatDate.format('2019-01-25', '[YYYY] YYYY-MM-DDTHH:mm:ssZ[Z]'); // 'YYYY 2019-01-25T00:00:00-02:00Z'
 ```
 
-注：使用方法同 dayjs().format(String)，详情可参考 [dayjs api](https://github.com/iamkun/dayjs/blob/dev/docs/zh-cn/API-reference.md#%E6%A0%BC%E5%BC%8F%E5%8C%96)
+*注：使用方法同 dayjs().format(String)，详情可参考 [dayjs api](https://github.com/iamkun/dayjs/blob/dev/docs/zh-cn/API-reference.md#%E6%A0%BC%E5%BC%8F%E5%8C%96)*
 
 ### Utils.formatDate.formatSeconds
 
@@ -668,11 +677,12 @@ Utils.formatDate.format('2019-01-25', '[YYYY] YYYY-MM-DDTHH:mm:ssZ[Z]'); // 'YYY
 ### 例子🌰
 
 ```js
-Utils.formatDate.formatSeconds('86399'); // 23:59:59
-Utils.formatDate.formatSeconds('86399', 'mm:ss'); // 59:59
+import { formatDate } from 'better-js-lib';
+formatDate.formatSeconds('86399'); // 23:59:59
+formatDate.formatSeconds('86399', 'mm:ss'); // 59:59
 ```
 
-注：这个方法是从 "1970-01-01 00:00:00" 开始计算的，所以年月日的值没有意义
+*注：这个方法是从 "1970-01-01 00:00:00" 开始计算的，所以年月日的值没有意义*
 
 ### Utils.formatDate.getDayZeroTm
 
@@ -685,9 +695,10 @@ Utils.formatDate.formatSeconds('86399', 'mm:ss'); // 59:59
 ### 例子🌰
 
 ```js
-Utils.formatDate.getDayZeroTm('2019-01-01 08:00:00', 's'); // 1546272000
-Utils.formatDate.getDayZeroTm('2019-01-01 08:00:00', 'ms'); // 1546272000000
-Utils.formatDate.getDayZeroTm('2019-01-01 08:00:00'); // 同 dayjs(1546272000000) 返回的对象
+import { formatDate } from 'better-js-lib';
+formatDate.getDayZeroTm('2019-01-01 08:00:00', 's'); // 1546272000
+formatDate.getDayZeroTm('2019-01-01 08:00:00', 'ms'); // 1546272000000
+formatDate.getDayZeroTm('2019-01-01 08:00:00'); // 同 dayjs(1546272000000) 返回的对象
 ```
 
 ### Utils.formatDate.dayjs
@@ -700,37 +711,102 @@ Utils.formatDate.getDayZeroTm('2019-01-01 08:00:00'); // 同 dayjs(1546272000000
 ### 例子🌰
 
 ```js
-Utils.formatDate.dayjs('2019-01-01 08:00:00'); // 同 dayjs('2019-01-01 08:00:00') 返回的对象
+import { formatDate } from 'better-js-lib';
+formatDate.dayjs('2019-01-01 08:00:00'); // 同 dayjs('2019-01-01 08:00:00') 返回的对象
 ```
 
-注：这个方法会返回一个 dayjs 对象，也就是说返回的对象也拥有 dayjs 中所有的方法
+*注：这个方法会返回一个 dayjs 对象，也就是说返回的对象也拥有 dayjs 中所有的方法*
 
 [:top:](#文档)
 
 ---
 
-<!-- demo
-# 文档
-这是一个xxx库，有xxx功能
+## Utils.batchHandleObjectFields
 
-## api模版
-函数简单介绍
+对一个对象中指定字段进行批量处理
 
-函数详细介绍
+- param {Object} [target] 目标对象
+- param {Array} [handleArr] 需要被处理的字段
+- param {Function} [format] 处理函数
+- return {Object} 处理后的对象
 
-函数参数和返回值（要遵守下面的例子的规则）
-
-- param {string} name1 name1描述
-- param {number} [name2] name2描述 ([]代表可选参数)
-- param {string|number} name3 name3描述 (| 代表多种类型)
-- param { * } name3 name3描述 (*代表任意类型)
-- param {boolean} obj.sex 复合参数定义
-- return {string} 返回值描述
-
-举个例子（要包含代码用例）
+### 例子🌰
 
 ```js
-// 代码
+import { batchHandleObjectFields } from 'better-js-lib';
+const data = {
+  price01: 10000,
+  price02: 10000,
+  price03: 10000,
+  value: '金额',
+  obj: { value: '123' },
+  arr: [1, 2, 3]
+};
+const processData = batchHandleObjectFields(data, ['price01', 'price02', 'price03'], (value) => value / 100);
+/*
+{
+  price01: 100,
+  price02: 100,
+  price03: 100,
+  value: '金额',
+  obj: { value: '123' },
+  arr: [1, 2, 3]
+}
+*/
 ```
 
-特殊说明，比如特殊情况下会报错等
+*注：目前此方法只支持处理值为 **基本数据类型** 的字段*
+
+[:top:](#文档)
+
+---
+
+## Utils.exchangeObjectFieldName
+
+替换一个对象中一些指定属性的属性名
+
+- param {Object} [obj] 目标对象
+- param {Array} [exchangeFields] 需要替换的对象属性名
+- return {Object} 处理后的对象
+
+### 例子🌰
+
+```js
+import { exchangeObjectFieldName } from 'better-js-lib';
+const data = {
+  price01: 10000,
+  price02: 10000,
+  price03: 10000,
+  value: '金额',
+  obj: { value: '123' },
+  arr: [1, 2, 3]
+};
+const processData = exchangeObjectFieldName(data, [
+  {
+    oldName: 'price01',
+    newName: 'newprice01'
+  },
+  {
+    oldName: 'obj',
+    newName: 'newobj',
+    handler: (val) => {
+      val.value = '456';
+      return val;
+    }
+  }
+]);
+/*
+{
+  newprice01: 10000,
+  price02: 10000,
+  price03: 10000,
+  value: '金额',
+  newobj: { value: '456' },
+  arr: [1, 2, 3]
+}
+*/
+```
+
+[:top:](#文档)
+
+---
