@@ -13,11 +13,8 @@
 ## :star: 特性
 
 - 使用 typescript 编写，提供更好的代码提示和类型检查
-- 多环境支持（支持浏览器原生，支持AMD，CMD，支持Node）
 - tree-shaking 支持
-- 持续更新，欢迎 issue ~
-
-> 注意: 如果不同时使用 `export` 与 `export default` 可打开 `legacy模式`，`legacy模式` 下的模块系统可以兼容 `ie6-8`，见rollup配置文件
+- 持续更新，欢迎 issue & RP ~
 
 ## :pill: 兼容性
 单元测试保证支持如下环境：
@@ -49,32 +46,10 @@
 $ npm install --save better-js-lib
 ```
 
-如果你是node环境
-
-```js
-var utils = require('better-js-lib');
-```
-
-如果你是webpack等环境
-
 ```js
 import utils from 'better-js-lib';
 // 按需引入函数
 import { is } from 'better-js-lib';
-```
-
-如果你是requirejs环境
-
-```js
-requirejs(['node_modules/better-js-lib/lib/index.aio.js'], function (base) {
-    // xxx
-})
-```
-
-如果你是浏览器环境
-
-```html
-<script src="node_modules/better-js-lib/lib/index.aio.js"></script>
 ```
 
 ## :bookmark_tabs: [文档](./doc/api.md)

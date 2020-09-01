@@ -17,7 +17,7 @@ type ExchangeFields = {
  * @param obj 任意一个对象
  * @param exchangeFields 需要替换的对象属性名
  */
-export const exchangeObjectFieldName = (obj: AnyObject, exchangeFields: ExchangeFields): AnyObject => {
+const exchangeObjectFieldName = (obj: AnyObject, exchangeFields: ExchangeFields): AnyObject => {
   const newObj: AnyObject = deepCopy(obj);
   exchangeFields.forEach(({ oldName, newName, handler }): void => {
     if (handler) {

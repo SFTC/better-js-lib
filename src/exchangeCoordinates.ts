@@ -11,7 +11,7 @@ interface Point {
 type PointRule = 'bd' | 'gg';
 
 /** 转化坐标，以用于不同的坐标系 */
-export function exchangeCoordinates(Coord: Point, origin: PointRule, format: PointRule): Point | undefined {
+function exchangeCoordinates(Coord: Point, origin: PointRule, format: PointRule): Point | undefined {
   if (!Coord.lng || !Coord.lat) {
     throw new Error('坐标参数 参数不正确');
   }

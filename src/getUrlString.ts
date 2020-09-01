@@ -2,7 +2,7 @@ import is from './is';
 import { AnyObject } from './index';
 
 /** 把对象反序列化成 url 后缀参数的字符串形式 */
-export function getUrlString(obj: AnyObject, config: { hasPrefix?: boolean } = {}): string {
+function getUrlString(obj: AnyObject, config: { hasPrefix?: boolean } = {}): string {
   if (!is.object(obj)) {
     throw new Error('getUrlString 的第一个参数的数据类型必须为对象');
   }

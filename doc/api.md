@@ -347,7 +347,7 @@ check.checkMail('13888888888@163.com'); // true
 check.checkPhone('13888888888'); // true
 
 /* 校验"手机， 座机， 分机号码"是否合法 */
-check.checkPhone('13888888888'); // true
+check.checkTelephone('13888888888'); // true
 ```
 [:top:](#文档)
 

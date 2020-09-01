@@ -1,5 +1,5 @@
 /** 计算两个坐标点之间的直线距离 */
-export function getPointsDistance(sLat: number, sLng: number, eLat: number, eLng: number): number {
+function getPointsDistance(sLat: number, sLng: number, eLat: number, eLng: number): number {
   if (!(sLat > 0 && sLng > 0 && eLat > 0 && eLng > 0)){
     throw new Error('参数不正确');
   }

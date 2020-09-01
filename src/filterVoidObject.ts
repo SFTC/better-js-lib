@@ -5,7 +5,7 @@ import { AnyObject } from './index';
 type AnyArray = any[];
 
 /** 过滤对象中的空值 */
-export function filterVoidObject(
+function filterVoidObject(
   obj: AnyObject,
   isValid = function(value: any): boolean {
     return value !== null && value !== undefined && value !== '';

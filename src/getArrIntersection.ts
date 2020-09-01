@@ -5,7 +5,7 @@ function intersect(arr0: any[], arr1: any[]): any[] {
 }
 
 /** 取多个数组的交集 */
-export function getArrIntersection(): any[] {
+function getArrIntersection(): any[] {
   //将arguments转换成数组
   var argumentsArr = Array.prototype.slice.apply(arguments);
   return argumentsArr.reduce(function(prev: any[], cur: any[]): any[] {

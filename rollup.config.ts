@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 import { RollupOptions } from 'rollup';
 import rollupTypescript from 'rollup-plugin-typescript2';
 import babel from 'rollup-plugin-babel';
@@ -7,33 +8,33 @@ import commonjs from 'rollup-plugin-commonjs';
 import { eslint } from 'rollup-plugin-eslint';
 import json from 'rollup-plugin-json';
 import sourceMaps from 'rollup-plugin-sourcemaps';
+import multiInput from 'rollup-plugin-multi-input';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 
 import pkg from './package.json';
 
-const paths = {
-  input: path.join(__dirname, '/src/index.ts'),
+/* const paths = {
+  input: path.join(__dirname, '/src/is.ts'),
   output: path.join(__dirname, '/lib'),
-};
+}; */
+
+/** 读取 src 下的所有函数 */
+const srcDir = fs.readdirSync(path.join(__dirname, '/src')).map((dir): string => `src/${dir}`);
+
 
 // rollup 配置项
 const rollupConfig: RollupOptions = {
-  input: paths.input,
+  input: srcDir,
   output: [
-    // 输出 commonjs 规范的代码
-    {
-      file: path.join(paths.output, 'index.js'),
-      format: 'cjs',
-      name: pkg.name,
-    },
     // 输出 es 规范的代码
     {
-      file: path.join(paths.output, 'index.esm.js'),
-      format: 'es',
+      format: 'esm',
+      dir: 'lib',
       name: pkg.name,
     },
   ],
-  // external: ['lodash'], // 指出应将哪些模块视为外部模块，如 Peer dependencies 中的依赖
+  // 指出应将哪些模块视为外部模块，如 Peer dependencies 中的依赖
+  external: ['dayjs', 'emoji-regex', 'lodash.clonedeep', 'number-precision'],
   // plugins 需要注意引用顺序
   plugins: [
     // 验证导入的文件
@@ -67,6 +68,9 @@ const rollupConfig: RollupOptions = {
     }),
     json({
       preferConst: true,
+    }),
+    multiInput({
+      relative: 'src/'
     }),
     sourceMaps(),
   ],

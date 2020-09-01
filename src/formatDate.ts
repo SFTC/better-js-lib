@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
  * @param {Number} n 数字
  * @returns {String} 格式化之后的数字
  */
-export function formatTimeNum(n: number): string {
+function formatTimeNum(n: number): string {
   return (n < 10 ? '0' : '') + n;
 }
 
@@ -17,7 +17,7 @@ export function formatTimeNum(n: number): string {
  * @param {String} formatVal 格式化模板
  * @returns {String} 格式化后的时间
  */
-export function formate(dateStr: dayjs.ConfigType, formatVal: string): string {
+function formate(dateStr: dayjs.ConfigType, formatVal: string): string {
   return dayjs(dateStr).format(formatVal);
 }
 
@@ -28,7 +28,7 @@ export function formate(dateStr: dayjs.ConfigType, formatVal: string): string {
  * @param {String} formatVal 格式化模板
  * @returns {String} 格式化后时间
  */
-export function formatSeconds(seconds: number, formatVal: string = 'HH:mm:ss'): string {
+function formatSeconds(seconds: number, formatVal: string = 'HH:mm:ss'): string {
   return dayjs('1970-01-01 00:00:00').add(seconds, 'second').format(formatVal);
 }
 
@@ -39,7 +39,7 @@ export function formatSeconds(seconds: number, formatVal: string = 'HH:mm:ss'): 
  * @param {String} unit 单位
  * @returns {Number|dayjs.Dayjs} 时间戳或者 dayjs 对象
  */
-export function getDayZeroTm(dateStr: dayjs.ConfigType, unit: string): number | dayjs.Dayjs {
+function getDayZeroTm(dateStr: dayjs.ConfigType, unit: string): number | dayjs.Dayjs {
   switch (unit) {
   case 's':
     return dayjs(dateStr).hour(0).minute(0).second(0).millisecond(0).unix();

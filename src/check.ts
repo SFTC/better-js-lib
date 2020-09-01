@@ -1,5 +1,5 @@
 /** 校验字符串是否都是中文 */
-export function checkCnString(tempString: string): boolean {
+function checkCnString(tempString: string): boolean {
   var chineseReg = /^[\u4E00-\u9FA5]+$/;
   return chineseReg.test(tempString);
 }
@@ -9,7 +9,7 @@ export function checkCnString(tempString: string): boolean {
  * @param {String} id 身份证号
  * @returns {Boolean} 检验结果
  */
-export function checkIDCard(id: string): boolean {
+function checkIDCard(id: string): boolean {
   var format = /^(([1][1-5])|([2][1-3])|([3][1-7])|([4][1-6])|([5][0-4])|([6][1-5])|([7][1])|([8][1-2]))\d{4}(([1][9]\d{2})|([2]\d{3}))(([0][1-9])|([1][0-2]))(([0][1-9])|([1-2][0-9])|([3][0-1]))\d{3}[0-9xX]$/;
   //号码规则校验
   if (!format.test(id)) {
@@ -45,7 +45,7 @@ export function checkIDCard(id: string): boolean {
  * @param {string} mail 邮箱
  * @returns {boolean} 校验结果
  */
-export function checkMail(mail: string): boolean {
+function checkMail(mail: string): boolean {
   /**
    * 规则如下：
    * 以大写字母[A-Z]、小写字母[a-z]、数字[0-9]、下滑线[_]、减号[-]、点号[.]、中文[\u4e00-\u9fa5]开头，并需要重复一次至多次[+]
@@ -62,7 +62,7 @@ export function checkMail(mail: string): boolean {
  * @param {string} phone 手机号
  * @returns {boolean} 校验结果
  */
-export function checkPhone(phone: string): boolean {
+function checkPhone(phone: string): boolean {
   /**
    * 规则如下：
    * 首位是必须是 1
@@ -77,7 +77,7 @@ export function checkPhone(phone: string): boolean {
 /**
  * 这个方法用来校验 ——> 手机， 座机， 分机号码
  */
-export function checkTelephone(phoneNumber: string): boolean {
+function checkTelephone(phoneNumber: string): boolean {
   var isPhone = /^(0\d{2,3}-?)?\d{7,8}$/;
   var isExt = /^[48]00-?\d{3}-?\d{4}$/;
 

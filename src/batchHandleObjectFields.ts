@@ -11,7 +11,7 @@ interface CopyedObjsType {
  * @param {Array} handleArr 需要被处理的字段
  * @param {Function} handler 处理函数
  */
-export function batchHandleObjectFields(target: any, handleArr: string[], handler: (arg0: any) => any): AnyObject {
+function batchHandleObjectFields(target: any, handleArr: string[], handler: (arg0: any) => any): AnyObject {
   let copyedObjs: CopyedObjsType[] = []; //此数组解决了循环引用和相同引用的问题，它存放已经递归到的目标对象
   function _deepCopy(target: AnyObject, needHandler = false): AnyObject {
     if (typeof target !== 'object' || !target) {

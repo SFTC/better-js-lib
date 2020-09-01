@@ -115,7 +115,7 @@ interface IsType {
 }
 
 /** is 判断各种数据类型 */
-export const is: IsType = {
+const is: IsType = {
   a: (value, type): boolean => typeof value === type,
   type: (value, type): boolean => typeof value === type,
   defined: (value): boolean => typeof value !== 'undefined',

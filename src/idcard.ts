@@ -1,4 +1,4 @@
-import { checkIDCard } from './check';
+import check from './check';
 
 function curryRight(fn: any): any {
   var args = [].slice.call(arguments, 1);
@@ -9,7 +9,7 @@ function curryRight(fn: any): any {
 }
 
 /** 通过身份证号获取一些个人信息，比如出生日期、属相等等 */
-export class Idcard {
+class Idcard {
   /** 传入的身份证号 */
   protected idCard: string;
 
@@ -60,7 +60,7 @@ export class Idcard {
     var len = this.idCard.length;
     const processedIdcard = len === 15 ? this.IDCard15To18(this.idCard) : this.idCard;
 
-    if (!checkIDCard(processedIdcard)) {
+    if (!check.checkIDCard(processedIdcard)) {
       return false;
     }
   

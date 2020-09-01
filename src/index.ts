@@ -17,7 +17,7 @@ export { default as exchangeCoordinates  } from './exchangeCoordinates';
 
 export { default as filterVoidObject } from './filterVoidObject';
 
-export { default as formatDate  } from './formatDate';
+export { default as formatDate } from './formatDate';
 
 export { default as getArrIntersection } from './getArrIntersection';
 
