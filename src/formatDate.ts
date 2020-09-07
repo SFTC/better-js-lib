@@ -39,7 +39,7 @@ function formatSeconds(seconds: number, formatVal: string = 'HH:mm:ss'): string 
  * @param {String} unit 单位
  * @returns {Number|dayjs.Dayjs} 时间戳或者 dayjs 对象
  */
-function getDayZeroTm(dateStr: dayjs.ConfigType, unit: string): number | dayjs.Dayjs {
+function getDayZeroTm(dateStr: dayjs.ConfigType, unit?: string): number | dayjs.Dayjs {
   switch (unit) {
   case 's':
     return dayjs(dateStr).hour(0).minute(0).second(0).millisecond(0).unix();
@@ -58,10 +58,10 @@ export default {
   /**
    * 将日期转为 dayjs 对象
    *
-   * @param {String} dateStr 日期
+   * @param {dayjs.ConfigType} dateStr 日期
    * @returns {Number|Object} dayjs 对象
    */
-  dayjs: function(dateStr: string): dayjs.Dayjs {
+  dayjs: function(dateStr?: dayjs.ConfigType): dayjs.Dayjs {
     return dayjs(dateStr);
   }
 };
