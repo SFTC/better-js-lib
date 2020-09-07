@@ -17,7 +17,7 @@ function formatTimeNum(n: number): string {
  * @param {String} formatVal 格式化模板
  * @returns {String} 格式化后的时间
  */
-function formate(dateStr: dayjs.ConfigType, formatVal: string): string {
+function format(dateStr: dayjs.ConfigType, formatVal: string): string {
   return dayjs(dateStr).format(formatVal);
 }
 
@@ -52,7 +52,7 @@ function getDayZeroTm(dateStr: dayjs.ConfigType, unit: string): number | dayjs.D
 
 export default {
   formatTimeNum,
-  formate,
+  format,
   formatSeconds,
   getDayZeroTm,
   /**
