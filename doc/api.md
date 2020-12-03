@@ -815,7 +815,7 @@ const processData = exchangeObjectFieldName(data, [
 
 初始化worker线程
 
-- @param {file} file 上传文件
+- @param {File} file 上传文件
 - @param {Worker} Worker 业务worker
 - @param {Object} options 自定义参数  
 - @param {Function} callback worker处理完毕回调函数
@@ -823,10 +823,11 @@ const processData = exchangeObjectFieldName(data, [
 ### 例子🌰
 
 ```js
+import costomerWorker from 'your worker path'
 import { asyncWorker } from 'better-js-lib';
 const worker = new asyncWorker(
   file,
-  xlsxWorker,
+  costomerWorker,     // 业务引入worker
   {
     rowLimit: 100,      // 行数上限 [非必填]
     columnLimit: 100,   // 列数上限 [非必填]
