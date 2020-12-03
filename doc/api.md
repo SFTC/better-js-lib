@@ -60,9 +60,9 @@
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-18)
   * [Utils.exchangeObjectFieldName - *替换一个对象中一些指定属性的属性名*](#utilsexchangeobjectfieldname)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-19)
-  * [Utils.asyncWorker - *worker封装*](#asyncWorker)
+  * [Utils.asyncWorker - *worker封装*](#utilsasyncWorker)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-20)
-  * [Utils.checkXlsxWorker - *xlsx worker校验*](#checkXlsxWorker)
+  * [Utils.checkXlsxWorker - *xlsx worker校验*](#utilscheckXlsxWorker)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-21)
 
 ## Utils.idcard
