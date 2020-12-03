@@ -880,12 +880,7 @@ data返回：
 
 ## Utils.checkXlsxWorker
 
-初始化worker线程
-
-- @param {file} file 上传文件
-- @param {Worker} Worker 业务worker
-- @param {Object} options 自定义参数  
-- @param {Function} callback worker处理完毕回调函数
+xlsx 文件处理（业务worker使用）
 
 ### 例子🌰
 
