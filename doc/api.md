@@ -823,11 +823,11 @@ const processData = exchangeObjectFieldName(data, [
 ### 例子🌰
 
 ```js
-import costomerWorker from 'your worker path'
+import customerWorker from 'xxx.worker.js' // your worker path  uostomerWorker随意定义名称
 import { asyncWorker } from 'better-js-lib';
 const worker = new asyncWorker(
   file,
-  costomerWorker,     // 业务引入worker
+  customerWorker,     // 业务引入worker
   {
     rowLimit: 100,      // 行数上限 [非必填]
     columnLimit: 100,   // 列数上限 [非必填]
