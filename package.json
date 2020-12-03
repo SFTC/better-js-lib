@@ -8,7 +8,7 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf ./lib",
-    "test:some": "cross-env NODE_ENV=test nyc mocha ./test/is.test.js",
+    "test:some": "cross-env NODE_ENV=test nyc mocha ./test/checkXlsx.test.js",
     "test": "npm run lint && nyc mocha",
     "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts'",
@@ -68,10 +68,11 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/lodash.clonedeep": "^4.5.6",
     "dayjs": "^1.8.33",
     "emoji-regex": "^9.0.0",
     "lodash.clonedeep": "^4.5.0",
     "number-precision": "^1.5.0",
-    "@types/lodash.clonedeep": "^4.5.6"
+    "xlsx": "^0.16.9"
   }
 }

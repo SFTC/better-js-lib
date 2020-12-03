@@ -34,7 +34,7 @@ const rollupConfig: RollupOptions = {
     },
   ],
   // 指出应将哪些模块视为外部模块，如 Peer dependencies 中的依赖
-  external: ['dayjs', 'emoji-regex', 'lodash.clonedeep', 'number-precision'],
+  external: ['dayjs', 'emoji-regex', 'lodash.clonedeep', 'number-precision', 'xlsx'],
   // plugins 需要注意引用顺序
   plugins: [
     // 验证导入的文件

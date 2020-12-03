@@ -807,6 +807,124 @@ const processData = exchangeObjectFieldName(data, [
 */
 ```
 
-[:top:](#文档)
+## Utils.asyncWorker
+
+初始化worker线程
+
+- @param {file} file 上传文件
+- @param {Worker} Worker 业务worker
+- @param {Object} options 自定义参数  
+- @param {Function} callback worker处理完毕回调函数
+
+### 例子🌰
+
+```js
+import { asyncWorker } from 'better-js-lib';
+const worker = new asyncWorker(
+  file,
+  xlsxWorker,
+  {
+    rowLimit: 100,      // 行数上限 [非必填]
+    columnLimit: 100,   // 列数上限 [非必填]
+    size: 1024,     // 单位: KB    [非必填]
+    result: {       // 返回解析内容  [非必填]
+      城市: "city_name",  // 表头字段所需转换的key
+      利润率: "lr",
+      折扣率: "discount_radio"
+    }
+  },
+  data => {
+    console.log(data);
+  }
+);
+// 初始化worker
+worker.init();
+
+// 提前关闭worler
+worker.close();
+
+/*
+data返回：
+{
+  "errno":0,
+  "errmsg":null,
+  "result":[
+    {
+      "city_name":"中山市",
+      "discount_radio":24.1,
+      "lr":25.1
+    },
+    {
+      "city_name":"北京市",
+      "discount_radio":25.1,
+      "lr":26.1
+    },
+    {
+      "city_name":"测试",
+      "discount_radio":22,
+      "lr":33
+    },
+    {
+      "city_name":"测试2",
+      "discount_radio":33,
+      "lr":44
+    }
+  ]
+}
+*/
+```
+
+## Utils.checkXlsxWorker
+
+初始化worker线程
+
+- @param {file} file 上传文件
+- @param {Worker} Worker 业务worker
+- @param {Object} options 自定义参数  
+- @param {Function} callback worker处理完毕回调函数
+
+### 例子🌰
+
+- 新建xxx.woker.js文件， 写入以下内容
+
+```js
+import { checkXlsxWorker } from 'better-js-lib';
+
+const res = function (info) {
+  postMessage(info);
+  self.close();
+};
+onmessage = e => checkXlsxWorker(e, res);
+```
+
+- 安装worker-loader
+```bash
+npm i -D worker-loader
+```
+
+- webpack添加
+```js
+configureWebpack: {
+  module: {
+    rules: [
+      {
+        test: /\.worker\.js$/,
+        loader: "worker-loader",
+        options: {
+          filename: "js/[name].[hash:8].js",
+          inline: "fallback"
+        }
+      }
+    ]
+  }
+},
+// 解决worker文件热更新问题
+chainWebpack: config => {
+  config.module.rule("js").exclude.add(/\.worker\.js$/);
+}
+```
+
+- asyncWorker中引入此worker文件，作为第二个参数传入
 
 ---
+[:top:](#文档)

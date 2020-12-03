@@ -9,6 +9,8 @@ export { default as NP } from 'number-precision';
 
 export { default as deepCopy } from 'lodash.clonedeep';
 
+export { default as xlsx } from 'xlsx';
+
 export { default as is } from './is';
 
 export { default as check } from './check';
@@ -40,3 +42,7 @@ export { default as exchangeTreeFieldName } from './exchangeTreeFieldName';
 export { default as exchangeObjectFieldName } from './exchangeObjectFieldName';
 
 export { default as batchHandleObjectFields } from './batchHandleObjectFields';
+
+export { default as asyncWorker } from './asyncWorker';
+
+export { default as checkXlsxWorker } from './checkXlsxWorker';
