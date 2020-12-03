@@ -1,6 +1,6 @@
 {
   "name": "better-js-lib",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "jslib最好用的js库脚手架",
   "main": "lib/index.js",
   "jsnext:main": "lib/index.esm.js",

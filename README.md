@@ -75,7 +75,7 @@ $ npm test
 
 > 注意：浏览器环境需要手动测试，位于`test/browser`
 
-修改 package.json 中的版本号，修改 README.md 中的版本号，修改 CHANGELOG.md，然后发布新版
+修改 package.json 中的版本号，修改 CHANGELOG.md，然后发布新版
 
 ```bash
 $ npm run release
