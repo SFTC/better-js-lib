@@ -19,3 +19,8 @@
 ## 2.0.9 / 2020-12-3
 
 - 新增 `asyncWorker` 和 `checkXlsxWorker` 方法
+
+## 2.1.0 / 2020-12-23
+
+- fixbug package.json "main" error
+- update dayjs to "1.9.7"
