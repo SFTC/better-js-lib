@@ -3,7 +3,7 @@ import expect from 'expect.js';
 import { Idcard } from '../src/index';
 
 describe('解析身份证号', function () {
-  var age = new Date().getFullYear() - 1994;
+  var age = new Date().getFullYear() - 1995;
 
   describe('从身份证号中得到生日', function () {
     it(
