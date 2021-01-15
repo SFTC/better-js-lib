@@ -39,8 +39,6 @@
       * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-8)
   * [Utils.deepCopy - *深拷贝数据*](#utilsdeepcopy)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-9)
-  * [Utils.isEmpty - *判断参数是否为空、 null、 undefined*](#utilsisempty)
-    * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-10)
   * [Utils.getPointsDistance - *计算两个坐标点之间的直线距离*](#utilsgetpointsdistance)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-11)
   * [Utils.exchangeCoordinates - *用来转化坐标，以用于不同的坐标系*](#utilsexchangecoordinates)
@@ -64,6 +62,8 @@
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-21)
   * [Utils.checkXlsxWorker - *xlsx worker校验*](#utilscheckXlsxWorker)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-22)
+  * [Utils.getScriptQuery - *获取脚本命令中的指定参数值*](#utilsgetScriptQuery)
+    * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-23)
 
 ## Utils.idcard
 
@@ -122,8 +122,11 @@ idcard.getBirthday('131002199408153611');
 ### general
 
  - ``is.a`` (value, type) 或者 ``is.type`` (value, type) - 通过原生 typeof 校验数据类型
+ - ``is.getType`` (value) - 获取 value 的数据类型
  - ``is.defined`` (value) - 校验 value 是否有定义
  - ``is.empty`` (value) - 校验 value 是否为空，这里的"空"包括 !!value === false、[]、{}
+ - ``is.empty2`` (value) - 校验 value 是否为空，这里的"空"包括 null、undefined、''
+ - ``is.emptyObj`` (value) - 校验 value 是否为空对象
  - ``is.equal`` (value, other) - 校验 value 和 other 是否相等，包括基本数据类型、函数、日期、数组、对象的深层对比
  - ``is.hosted`` (value, host) - 校验 对象 `hosted` 的属性 `value` 是否是 hosted(包括除基本数据类型之外的对象数据类型)
  - ``is.instance`` (value, constructor) - 校验 value 是否是 constructor 的实例化对象
@@ -577,25 +580,6 @@ obj.key.name; // 'person'
 
 ---
 
-## Utils.isEmpty
-
-判断参数是否为空、 null、 undefined
-
-- obj {*} 任何数据
-- return {Boolean} 校验结果
-  
-### 例子🌰
-
-```js
-import { isEmpty } from 'better-js-lib';
-isEmpty(null); // true
-isEmpty('this is a string'); // false
-```
-
-[:top:](#文档)
-
----
-
 ## Utils.getPointsDistance
 
 这个方法用来计算两个坐标点之间的直线距离
@@ -811,6 +795,10 @@ const processData = exchangeObjectFieldName(data, [
 */
 ```
 
+[:top:](#文档)
+
+---
+
 ## Utils.asyncWorker
 
 初始化worker线程
@@ -879,6 +867,10 @@ data返回：
 */
 ```
 
+[:top:](#文档)
+
+---
+
 ## Utils.checkXlsxWorker
 
 xlsx 文件处理（业务worker使用）
@@ -926,5 +918,26 @@ chainWebpack: config => {
 
 - asyncWorker中引入此worker文件，作为第二个参数传入
 
----
 [:top:](#文档)
+
+---
+
+## Utils.getScriptQuery
+
+获取 package.json 的 scripts 中启动命令的指定参数值
+*比如从 npm run dev --proxy=mock 得到 proxy 的值为 mock*
+
+- param {String} field 要获取的参数名
+- return {String} 参数值，没有则返回空字符串
+
+### 例子🌰
+
+```js
+// npm run dev --proxy=mock
+import { getScriptQuery } from 'better-js-lib';
+getScriptQuery('proxy'); // mock
+```
+
+[:top:](#文档)
+
+---

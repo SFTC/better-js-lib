@@ -9,8 +9,8 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf ./lib",
-    "test:some": "cross-env NODE_ENV=test nyc mocha ./test/is.test.js",
-    "test": "npm run lint && nyc mocha",
+    "test:some": "cross-env NODE_ENV=test nyc mocha ./test/getScriptQuery.test.js",
+    "test": "npm run lint --proxy=mock && nyc mocha",
     "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts'",
     "lint:fix": "eslint -c .eslintrc.js 'src/**/*.ts' --fix",
