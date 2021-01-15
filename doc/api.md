@@ -64,6 +64,8 @@
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-21)
   * [Utils.getScriptQuery - *获取脚本命令中的指定参数值*](#utilsgetScriptQuery)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-22)
+  * [Utils.getNumberWithPrecision - *将数字转为百分比格式*](#utilsgetNumberWithPrecision)
+    * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-23)
 
 ## Utils.idcard
 
@@ -928,7 +930,8 @@ chainWebpack: config => {
 *比如从 npm run dev --proxy=mock 得到 proxy 的值为 mock*
 
 - param {String} field 要获取的参数名
-- return {String} 参数值，没有则返回空字符串
+- param {String} [defaultValue] 未获取到参数值，可设置一个默认值
+- return {String} 参数值，没有获取到并且没有设置默认值会返回 null
 
 ### 例子🌰
 
@@ -936,6 +939,59 @@ chainWebpack: config => {
 // npm run dev --proxy=mock
 import { getScriptQuery } from 'better-js-lib';
 getScriptQuery('proxy'); // mock
+getScriptQuery('port'); // null
+```
+
+[:top:](#文档)
+
+---
+
+## Utils.getNumberWithPrecision
+
+将数字转为百分比格式
+
+- param {Number} value 要转换的数字
+- param {Number} [precision] 保留小数点后几位有效数字，默认为 2
+- param {Boolean} [needUnit] 保是否需要添加单位后缀，默认为 false
+- return {String} 转换后的百分比
+
+### 例子🌰
+
+```js
+import { getNumberWithPrecision } from 'better-js-lib';
+getNumberWithPrecision(0.126); // '12.60'
+getNumberWithPrecision(0.126, 1); // '12.6'
+getNumberWithPrecision(0.126, 0); // '13'
+getNumberWithPrecision(0.126, -1); // '0.126'
+getNumberWithPrecision(0.126, undefined, true); // '12.60%'
+```
+
+[:top:](#文档)
+
+---
+
+## Utils.GradientColor
+
+根据首尾颜色和步长计算出渐变颜色的色值
+
+- param {Number} startRGB 起始颜色
+- param {Number} endRGB 结束颜色
+
+方法
+
+- getColor 获取颜色值数组
+  - param {Number} step 步长
+  - return {string[]} 渐变颜色值数组
+
+### 例子🌰
+
+```js
+import { GradientColor } from 'better-js-lib';
+
+const gradientColor = new GradientColor('#0057A0', '#90D5FF');
+
+gradientColor.getColor(5);
+// ['rgb(0,87,160)','rgb(29,112,179)', 'rgb(58,137,198)', 'rgb(86,163,217)', 'rgb(115,188,236)']
 ```
 
 [:top:](#文档)

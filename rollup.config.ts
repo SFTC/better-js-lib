@@ -29,7 +29,14 @@ const rollupConfig: RollupOptions = {
     // 输出 es 规范的代码
     {
       format: 'esm',
+      dir: 'es',
+      name: pkg.name,
+    },
+    // 输出 cjs 规范的代码
+    {
+      format: 'cjs',
       dir: 'lib',
+      exports: 'named',
       name: pkg.name,
     },
   ],
@@ -42,7 +49,7 @@ const rollupConfig: RollupOptions = {
       throwOnError: true, // lint 结果有错误将会抛出异常
       throwOnWarning: true,
       include: ['src/**/*.ts'],
-      exclude: ['node_modules/**', 'lib/**', '*.js'],
+      exclude: ['node_modules/**', 'lib/**', '*.js', 'es/**',],
     }),
 
     // 使得 rollup 支持 commonjs 规范，识别 commonjs 规范的依赖

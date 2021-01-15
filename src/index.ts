@@ -46,3 +46,7 @@ export { default as asyncWorker } from './asyncWorker';
 export { default as checkXlsxWorker } from './checkXlsxWorker';
 
 export { default as getScriptQuery } from './getScriptQuery';
+
+export { default as getNumberWithPrecision } from './getNumberWithPrecision';
+
+export { default as GradientColor } from './GradientColor';
