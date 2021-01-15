@@ -17,12 +17,6 @@ describe('is.type/is.a', function () {
   });
 
   it('number', function () {
-    var booleans = [true, false];
-    expect(is.type(true, 'boolean')).to.be.ok();
-    forEach(booleans, function (boolean) {
-      expect(is.type(boolean, 'boolean')).to.be.ok();
-      expect(is.a(boolean, 'boolean')).to.be.ok();
-    });
     var numbers = [1, 0 / 1, 0 / -1, NaN, Infinity, -Infinity];
     forEach(numbers, function (number) {
       expect(is.type(number, 'number')).to.be.ok();
@@ -49,6 +43,44 @@ describe('is.type/is.a', function () {
   it('undefined', function () {
     expect(is.type(undefined, 'undefined')).to.be.ok();
     expect(is.a(undefined, 'undefined')).to.be.ok();
+  });
+});
+
+describe('is.getType', function () {
+  it('boolean', function () {
+    var booleans = [true, false];
+    forEach(booleans, function (boolean) {
+      expect(is.getType(boolean)).to.equal('boolean');
+    });
+  });
+
+  it('number', function () {
+    var numbers = [1, 0 / 1, 0 / -1, NaN, Infinity, -Infinity];
+    forEach(numbers, function (number) {
+      expect(is.getType(number)).to.equal('number');
+    });
+  });
+
+  it('object', function () {
+    var objects = [{}, { a: 1 }];
+    forEach(objects, function (object) {
+      expect(is.getType(object)).to.equal('object');
+    });
+  });
+
+  it('date', function () {
+    expect(is.getType(new Date())).to.equal('date');
+  });
+
+  it('string', function () {
+    var strings = ['', 'abc'];
+    forEach(strings, function (string) {
+      expect(is.getType(string)).to.equal('string');
+    });
+  });
+
+  it('undefined', function () {
+    expect(is.getType(undefined)).to.equal('undefined');
   });
 });
 
@@ -126,6 +158,41 @@ describe('is.empty', function () {
   });
   it('date is not empty', function() {
     expect(is.empty(new Date())).to.not.be.ok();
+  });
+});
+
+describe('is.empty2', function() {
+  it('判断空字符串', function () {
+    expect(is.empty2('')).to.be.ok();
+  });
+  it('判断null', function () {
+    expect(is.empty2(null)).to.be.ok();
+  });
+  it('判断undefined', function () {
+    expect(is.empty2(undefined)).to.be.ok();
+  });
+  it('判断空对象', function () {
+    expect(is.empty2({})).to.not.be.ok();
+  });
+  it('判断空数组', function () {
+    expect(is.empty2([])).to.not.be.ok();
+  });
+  it('判断NaN', function () {
+    expect(is.empty2([])).to.not.be.ok();
+  });
+});
+
+describe('is.emptyObj', function() {
+  it('参数不合法', function () {
+    try {
+      expect(is.emptyObj([]));
+    } catch (err) {
+      expect(err).to.eql(new Error('参数类型非object'));
+    }
+  });
+  it('参数合法', function () {
+    expect(is.emptyObj({})).to.equal(true);
+    expect(is.emptyObj({a: 1})).to.equal(false);
   });
 });
 

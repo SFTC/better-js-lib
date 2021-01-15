@@ -44,3 +44,5 @@ export { default as batchHandleObjectFields } from './batchHandleObjectFields';
 export { default as asyncWorker } from './asyncWorker';
 
 export { default as checkXlsxWorker } from './checkXlsxWorker';
+
+export { default as getScriptQuery } from './getScriptQuery';

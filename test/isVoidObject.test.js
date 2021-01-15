@@ -14,5 +14,4 @@ describe('判断是否为空对象', function() {
     expect(isVoidObject({})).to.equal(true);
     expect(isVoidObject({a: 1})).to.equal(false);
   });
-    
 });

@@ -1,12 +1,12 @@
 import is from './is';
 
-/** 判断一个对象是否为空对象 */
+/**
+ * 判断一个对象是否为空对象
+ * @deprecated please use the "is.emptyObj" method instead
+ */
 function isVoidObject(obj: any): boolean {
-  if (!is.object(obj)) {
-    throw new Error('参数类型非object');
-  } else {
-    return is.empty(obj);
-  }
+  console.warn('isVoidObject is deprecated, please use is.emptyObj instead');
+  return is.emptyObj(obj);
 }
 
 export default isVoidObject;

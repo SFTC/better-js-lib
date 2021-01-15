@@ -46,6 +46,6 @@ describe('使用 getDayZeroTm 获取指定日期的零点时间戳', function ()
 
 describe('使用 dayjs 方法来实例化一个 dayjs 对象', function () {
   it('输入 dayjs() 返回一个 当前时间的 dayjs 对象', function() {
-    expect(dayjs(fnDayjs()).isSame(dayjs())).to.equal(true);
+    expect(fnDayjs().isSame(dayjs())).to.equal(true);
   });
 });

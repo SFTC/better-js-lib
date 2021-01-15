@@ -1,6 +1,6 @@
 {
   "name": "better-js-lib",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "jslib最好用的js库脚手架",
   "main": "lib/index.js",
   "jsnext:main": "lib/index.js",
@@ -9,8 +9,8 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf ./lib",
-    "test:some": "cross-env NODE_ENV=test nyc mocha ./test/checkXlsx.test.js",
-    "test": "npm run lint && nyc mocha",
+    "test:some": "cross-env NODE_ENV=test nyc mocha ./test/getScriptQuery.test.js",
+    "test": "npm run lint --proxy=mock && nyc mocha",
     "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
     "lint": "eslint -c .eslintrc.js 'src/**/*.ts'",
     "lint:fix": "eslint -c .eslintrc.js 'src/**/*.ts' --fix",
