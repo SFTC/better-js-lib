@@ -28,10 +28,16 @@ interface IsType {
   a: (value: any, type: string) => boolean;
   /** 通过原生 typeof 校验数据类型 */
   type: (value: any, type: string) => boolean;
+  /** 获取 value 的数据类型 */
+  getType: (value: any) => string;
   /** 校验 value 是否有定义 */
   defined: (value: any) => boolean;
   /** 校验 value 是否为空，这里的"空"包括 !!value === false、[]、{} */
   empty: (value: any) => boolean;
+  /** 校验 value 是否为空，这里的"空"包括 null、undefined、'' */
+  empty2: (value: any) => boolean;
+  /** 校验 value 是否为空对象 */
+  emptyObj: (value: any) => boolean;
   /** 校验 value 和 other 是否相等 */
   equal: (value: any, other: any) => boolean;
   /** 校验对象 hosted 的属性 value 是否是 hosted */
@@ -118,6 +124,14 @@ interface IsType {
 const is: IsType = {
   a: (value, type): boolean => typeof value === type,
   type: (value, type): boolean => typeof value === type,
+  getType: (value): string => {
+    var dataType = toStr.call(value);
+    var regRes = dataType.match(/\[object (\w+)\]/);
+    if (regRes) {
+      return regRes[1].toLowerCase();
+    }
+    throw Error(`未获取到该数据【${JSON.stringify(value)}】的类型`);
+  },
   defined: (value): boolean => typeof value !== 'undefined',
   empty: (value): boolean => {
     var type = toStr.call(value);
@@ -137,6 +151,16 @@ const is: IsType = {
     }
 
     return !value;
+  },
+  empty2(value): boolean {
+    return is.nil(value) || is.undef(value) || value === '';
+  },
+  emptyObj(value): boolean {
+    if (!is.object(value)) {
+      return false;
+    } else {
+      return is.empty(value);
+    }
   },
   equal: (value, other): boolean => {
     if (value === other) {
