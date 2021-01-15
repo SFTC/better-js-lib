@@ -928,7 +928,8 @@ chainWebpack: config => {
 *比如从 npm run dev --proxy=mock 得到 proxy 的值为 mock*
 
 - param {String} field 要获取的参数名
-- return {String} 参数值，没有则返回空字符串
+- param {String} [defaultValue] 未获取到参数值，可设置一个默认值
+- return {String} 参数值，没有获取到并且没有设置默认值会返回 null
 
 ### 例子🌰
 
@@ -936,6 +937,7 @@ chainWebpack: config => {
 // npm run dev --proxy=mock
 import { getScriptQuery } from 'better-js-lib';
 getScriptQuery('proxy'); // mock
+getScriptQuery('port'); // null
 ```
 
 [:top:](#文档)

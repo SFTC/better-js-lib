@@ -4,11 +4,11 @@
   "description": "jslib最好用的js库脚手架",
   "main": "lib/index.js",
   "jsnext:main": "lib/index.js",
-  "module": "lib/index.js",
+  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf ./lib",
+    "clean": "rimraf ./es ./lib",
     "test:some": "cross-env NODE_ENV=test nyc mocha ./test/getScriptQuery.test.js",
     "test": "npm run lint --proxy=mock && nyc mocha",
     "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
@@ -27,7 +27,7 @@
     "url": "https://github.com/bluescurry/better-js-lib/issues"
   },
   "files": [
-    "/lib",
+    "/es",
     "*.d.ts"
   ],
   "engines": {

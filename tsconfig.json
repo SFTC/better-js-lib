@@ -16,7 +16,7 @@
 
     /* 模块分析配置 */
     "baseUrl": ".",
-    "outDir": "./lib",
+    "outDir": "./es",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true

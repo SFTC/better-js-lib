@@ -1,5 +1,6 @@
 *.d.ts
 lib/
+es/
 node_modules/
 public/
 config/
