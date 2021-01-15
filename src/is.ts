@@ -28,7 +28,7 @@ interface IsType {
   a: (value: any, type: string) => boolean;
   /** 通过原生 typeof 校验数据类型 */
   type: (value: any, type: string) => boolean;
-  /** 获取 value 的数据类型 */
+  /**  value 的数据类型 */
   getType: (value: any) => string;
   /** 校验 value 是否有定义 */
   defined: (value: any) => boolean;
@@ -47,7 +47,7 @@ interface IsType {
   /** 校验 value 的数据类型是否是 null */
   nil: (value: any) => boolean;
   /** 校验 value 的数据类型是否是 undefined */
-  undef: (value: any) => boolean;
+  undef: (value: any) => value is undefined;
   /** 校验 value 的数据类型是否是参数数组 */
   args: (value: any) => boolean;
   /** 校验 value 的数据类型是否是数组 */
@@ -218,7 +218,7 @@ const is: IsType = {
   },
   instance: (value, constructor): boolean => value instanceof constructor,
   nil: (value): boolean => value === null,
-  undef: (value): boolean => typeof value === 'undefined',
+  undef: (value): value is undefined => typeof value === 'undefined',
   args: (value): boolean => {
     var isStandardArguments = toStr.call(value) === '[object Arguments]';
     var isOldArguments = !is.array(value) && is.arraylike(value) && is.object(value) && is.fn(value.callee);
