@@ -37,7 +37,7 @@ interface IsType {
   /** 校验 value 是否为空，这里的"空"包括 null、undefined、'' */
   empty2: (value: any) => boolean;
   /** 校验 value 是否为空对象 */
-  emptyObj: (value: any) => boolean;
+  emptyObj: (value: any) => value is {};
   /** 校验 value 和 other 是否相等 */
   equal: (value: any, other: any) => boolean;
   /** 校验对象 hosted 的属性 value 是否是 hosted */
@@ -45,25 +45,25 @@ interface IsType {
   /** 校验 value 是否是 constructor 的实例化对象 */
   instance: (value: any, host: any) => boolean;
   /** 校验 value 的数据类型是否是 null */
-  nil: (value: any) => boolean;
+  nil: (value: any) => value is null;
   /** 校验 value 的数据类型是否是 undefined */
   undef: (value: any) => value is undefined;
   /** 校验 value 的数据类型是否是参数数组 */
   args: (value: any) => boolean;
   /** 校验 value 的数据类型是否是数组 */
-  array: (value: any) => boolean;
+  array: <T = any>(value: any) => value is T[];
   /** 校验 value 是否是一个空的参数数组 */
   'args-empty': (value: any) => boolean;
   /** 校验 value 是否是一个空的数组 */
-  'array-empty': (value: any) => boolean;
+  'array-empty': (value: any) => value is [];
   /** 校验 value 是否是一个类数组 */
   arraylike: (value: any) => boolean;
   /** 校验 value 的数据类型是否是对象 */
-  object: (value: any) => boolean;
+  object: <K extends string | number | symbol, T>(value: any) => value is Record<K, T>;
   /** 校验 value 是否可以被整除 */
   divisibleBy: (value: number, n: number) => boolean;
   /** 校验 value 是否为整数 */
-  integer: (value: any) => boolean;
+  integer: (value: any) => value is number;
   /** 判断 value 是否是 others数组中最大的 */
   maximum: (value: number, others: any[]) => boolean;
   /** 判断 value 是否是 others数组中最小的 */
@@ -71,9 +71,9 @@ interface IsType {
   /** 判断 value 是否是 NaN */
   nan: (value: any) => boolean;
   /** 判断 value 是否是偶数 */
-  even: (value: number) => boolean;
+  even: (value: number) => value is number;
   /** 判断 value 是否是奇数 */
-  odd: (value: number) => boolean;
+  odd: (value: number) => value is number;
   /** 判断 value 是否大于或等于 other */
   ge: (value: number, other: number) => boolean;
   /** 判断 value 是否大于 other */
@@ -89,35 +89,35 @@ interface IsType {
   /** 判断 value 是否是 hash */
   hash: (value: any) => boolean;
   /** 判断 value 是否是正则表达式 */
-  regexp: (value: any) => boolean;
-  /** 判断 value 是否是字符创 */
-  string: (value: any) => boolean;
+  regexp: (value: any) => value is RegExp;
+  /** 判断 value 是否是字符串 */
+  string: (value: any) => value is string;
   /** 判断 value 是否是一个 base64 编码的二进制数据 */
-  base64: (value: any) => boolean;
+  base64: (value: any) => value is string;
   /** 校验 value 是否是一个十六进制数据 */
-  hex: (value: any) => boolean;
+  hex: (value: any) => value is string;
   /** 校验 value 的数据类型是否是 symbol */
-  symbol: (value: any) => boolean;
+  symbol: (value: any) => value is symbol;
   /** 校验 value 的数据类型是否是 ES-提议的 bigint 类型 */
-  bigint: (value: any) => boolean;
+  bigint: (value: any) => value is bigint;
   /** 校验 value 是否为小数 */
-  decimal: (value: any) => boolean;
+  decimal: (value: any) => value is number;
   /** 校验 value 是否为无穷大 */
-  infinite: (value: any) => boolean;
+  infinite: (value: any) => value is number;
   /** 校验 value 的数据类型是否是数字 */
-  number: (value: any) => boolean;
+  number: (value: any) => value is number;
   /** 校验 value 的数据类型是否是函数类型 */
   fn: (value: any) => boolean;
   /** 校验 value 的数据类型是否是 Error */
-  error: (value: any) => boolean;
+  error: (value: any) => value is Error;
   /** 校验 value 是否是一个 HTML 元素节点 */
   element: (value: any) => boolean;
   /** 校验 value 是否是可转化为日期的数字 */
   'date-valid': (value: any) => boolean;
   /** 校验 value 的数据类型是否是日期类型 */
-  date: (value: any) => boolean;
+  date: (value: any) => value is Date;
   /** 校验 value 的数据类型是否是布尔值 */
-  bool: (value: any) => boolean;
+  bool: (value: any) => value is boolean;
 }
 
 /** is 判断各种数据类型 */
@@ -155,7 +155,7 @@ const is: IsType = {
   empty2(value): boolean {
     return is.nil(value) || is.undef(value) || value === '';
   },
-  emptyObj(value): boolean {
+  emptyObj(value): value is object {
     if (!is.object(value)) {
       return false;
     } else {
@@ -217,7 +217,7 @@ const is: IsType = {
     return type === 'object' ? !!host[value] : !NON_HOST_TYPES[type];
   },
   instance: (value, constructor): boolean => value instanceof constructor,
-  nil: (value): boolean => value === null,
+  nil: (value): value is null => value === null,
   undef: (value): value is undefined => typeof value === 'undefined',
   args: (value): boolean => {
     var isStandardArguments = toStr.call(value) === '[object Arguments]';
@@ -226,16 +226,16 @@ const is: IsType = {
   },
   'args-empty': (value): boolean => is.args(value) && value.length === 0,
   array: Array.isArray || ((value): boolean => toStr.call(value) === '[object Array]'),
-  'array-empty': (value): boolean => is.array(value) && value.length === 0,
+  'array-empty': (value): value is [] => is.array(value) && value.length === 0,
   arraylike: (value: any): boolean => !!value && !is.bool(value)&& owns.call(value, 'length') && isFinite(value.length) && is.number(value.length) && value.length >= 0,
-  bool: (value: any): boolean => toStr.call(value) === '[object Boolean]',
-  date: (value: any): boolean => toStr.call(value) === '[object Date]',
+  bool: (value: any): value is boolean => toStr.call(value) === '[object Boolean]',
+  date: (value: any): value is Date => toStr.call(value) === '[object Date]',
   'date-valid': (value: any): boolean => is.date(value) && !isNaN(Number(value)),
   element: (value: any): boolean => value !== undefined
     && typeof HTMLElement !== 'undefined'
     && value instanceof HTMLElement
     && value.nodeType === 1,
-  error: (value: any): boolean => toStr.call(value) === '[object Error]',
+  error: (value: any): value is Error => toStr.call(value) === '[object Error]',
   fn: (value: any): boolean => {
     var isAlert = typeof window !== 'undefined' && value === window.alert;
     if (isAlert) {
@@ -244,16 +244,16 @@ const is: IsType = {
     var str = toStr.call(value);
     return str === '[object Function]' || str === '[object GeneratorFunction]' || str === '[object AsyncFunction]';
   },
-  number: (value: any): boolean => toStr.call(value) === '[object Number]',
-  infinite: (value: any): boolean => value === Infinity || value === -Infinity,
-  decimal: (value: any): boolean => is.number(value) && !isActualNaN(value) && !is.infinite(value) && value % 1 !== 0,
+  number: (value: any): value is number => toStr.call(value) === '[object Number]',
+  infinite: (value: any): value is number => value === Infinity || value === -Infinity,
+  decimal: (value: any): value is number => is.number(value) && !isActualNaN(value) && !is.infinite(value) && value % 1 !== 0,
   divisibleBy: (value: number, n: number): boolean => {
     var isDividendInfinite = is.infinite(value);
     var isDivisorInfinite = is.infinite(n);
     var isNonZeroNumber = is.number(value) && !isActualNaN(value) && is.number(n) && !isActualNaN(n) && n !== 0;
     return isDividendInfinite || isDivisorInfinite || (isNonZeroNumber && value % n === 0);
   },
-  integer: (value): boolean => is.number(value) && !isActualNaN(value) && value % 1 === 0,
+  integer: (value): value is number => is.number(value) && !isActualNaN(value) && value % 1 === 0,
   maximum: (value: number, others: any[]): boolean => {
     if (isActualNaN(value)) {
       throw new TypeError('NaN is not a valid value');
@@ -287,8 +287,8 @@ const is: IsType = {
     return true;
   },
   nan:(value: any): boolean => !is.number(value) || value !== value,
-  even:(value: number): boolean => is.infinite(value) || (is.number(value) && value === value && value % 2 === 0),
-  odd:(value: number): boolean => is.infinite(value) || (is.number(value) && value === value && value % 2 !== 0),
+  even:(value: number): value is number => is.infinite(value) || (is.number(value) && value === value && value % 2 === 0),
+  odd:(value: number): value is number => is.infinite(value) || (is.number(value) && value === value && value % 2 !== 0),
   ge:(value: number, other: number): boolean => {
     if (isActualNaN(value) || isActualNaN(other)) {
       throw new TypeError('NaN is not a valid value');
@@ -322,7 +322,7 @@ const is: IsType = {
     var isAnyInfinite = is.infinite(value) || is.infinite(start) || is.infinite(finish);
     return isAnyInfinite || (value >= start && value <= finish);
   },
-  object:(value: any): boolean => toStr.call(value) === '[object Object]',
+  object: <K extends string | number | symbol, T>(value: any): value is Record<K, T> => toStr.call(value) === '[object Object]',
   primitive:(value: any): boolean => {
     if (!value) {
       return true;
@@ -333,13 +333,13 @@ const is: IsType = {
     return true;
   },
   hash:(value: any): boolean => is.object(value) && value.constructor === Object && !value.nodeType && !value.setInterval,
-  regexp:(value: any): boolean => toStr.call(value) === '[object RegExp]',
-  string:(value: any): boolean => toStr.call(value) === '[object String]',
-  base64:(value: any): boolean => is.string(value) && (!value.length || base64Regex.test(value)),
-  hex:(value: any): boolean => is.string(value) && (!value.length || hexRegex.test(value)),
-  symbol:(value: any): boolean => typeof Symbol === 'function' && toStr.call(value) === '[object Symbol]' && typeof symbolValueOf.call(value) === 'symbol',
+  regexp:(value: any): value is RegExp => toStr.call(value) === '[object RegExp]',
+  string:(value: any): value is string => toStr.call(value) === '[object String]',
+  base64:(value: any): value is string => is.string(value) && (!value.length || base64Regex.test(value)),
+  hex:(value: any): value is string => is.string(value) && (!value.length || hexRegex.test(value)),
+  symbol:(value: any): value is symbol => typeof Symbol === 'function' && toStr.call(value) === '[object Symbol]' && typeof symbolValueOf.call(value) === 'symbol',
   // eslint-disable-next-line valid-typeof
-  bigint:(value: any): boolean => typeof BigInt === 'function' && toStr.call(value) === '[object BigInt]' && typeof bigIntValueOf.call(value) === 'bigint'
+  bigint:(value: any): value is bigint => typeof BigInt === 'function' && toStr.call(value) === '[object BigInt]' && typeof bigIntValueOf.call(value) === 'bigint'
 };
 
 export default is;

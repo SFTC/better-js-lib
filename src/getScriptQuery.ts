@@ -2,6 +2,7 @@
  * 从 npm 启动命令中获取指定参数
  * 比如从 npm run dev --proxy=mock 得到 proxy 的值为 mock
  * @param field 要获取的参数名
+ * @param defaultValue 要获取的参数名
  * @returns 返回的参数值，没有则返回 null
  */
 const getScriptQuery = (field: string, defaultValue: string | null = null ): string | null => {
