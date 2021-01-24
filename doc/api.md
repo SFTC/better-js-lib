@@ -67,7 +67,7 @@
   * [Utils.getNumberWithPrecision - *将数字转为百分比格式*](#utilsgetNumberWithPrecision)
     * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-23)
   * [Utils.GradientColor - *根据首尾颜色和步长计算出渐变颜色的色值*](#utilsGradientColor)
-    * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-23)
+    * [例子<g-emoji class="g-emoji" alias="chestnut" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png">🌰</g-emoji>](#例子-24)
 
 ## Utils.idcard
 
