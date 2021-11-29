@@ -77,6 +77,6 @@
     "number-precision": "^1.5.0"
   },
   "optionalDependencies": {
-    "xlsx": "^0.16.9"
+    "xlsx": "^0.17.0"
   }
 }
