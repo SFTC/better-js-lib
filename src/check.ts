@@ -78,7 +78,12 @@ function checkPhone(phone: string): boolean {
  * 这个方法用来校验 ——> 手机， 座机， 分机号码
  */
 function checkTelephone(phoneNumber: string): boolean {
-  var isPhone = /^(0\d{2,3}-?)?\d{7,8}$/;
+  /**
+   * 规则如下：
+   * ()表示可选
+   * 匹配(0开头2～3位数字)- 7～8位数字(- 2~5位数字)
+   */
+  var isPhone = /^(0\d{2,3}-?)?\d{7,8}(-\d{2,5})?$/;
   var isExt = /^[48]00-?\d{3}-?\d{4}$/;
 
   var regRes = false; // 校验结果

@@ -69,5 +69,8 @@ describe('校验工具', function() {
     it('400-010-2323 是合法的分机格式', function () {
       expect(checkTelephone('400-010-2323')).to.be.ok();
     });
+    it('58235823-2323 是合法的分机格式', function () {
+      expect(checkTelephone('400-010-2323')).to.be.ok();
+    });
   });
 });
