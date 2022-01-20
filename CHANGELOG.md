@@ -24,3 +24,7 @@
 
 - fixbug package.json "main" error
 - update dayjs to "1.9.7"
+
+## 2.1.0 / 2022-01-20
+
+- 校验座机号时兼容分机号逻辑 [#24](https://github.com/SFTC/better-js-lib/pull/24)
