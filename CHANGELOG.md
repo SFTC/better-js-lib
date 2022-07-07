@@ -32,3 +32,8 @@
 ## 2.3.3 / 2022-06-29
 
 - getUrlQuery 方法获取指定参数时，兼容既有`url`参数又有`hash`参数的case
+
+## 2.3.4 / 2022-07-07
+
+- 删除 `asyncWorker` 和 `checkXlsxWorker` 方法以减少包体积
+- 优化 `getUrlQuery` 方法的 ts 类型，当获取不到参数时不再返回 `null`，而是返回 `""`

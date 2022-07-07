@@ -1,6 +1,6 @@
 {
   "name": "better-js-lib",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "jslib最好用的js库脚手架",
   "main": "lib/index.js",
   "jsnext:main": "lib/index.js",
@@ -75,8 +75,5 @@
     "emoji-regex": "^9.0.0",
     "lodash.clonedeep": "^4.5.0",
     "number-precision": "^1.5.0"
-  },
-  "optionalDependencies": {
-    "xlsx": "^0.17.0"
   }
 }

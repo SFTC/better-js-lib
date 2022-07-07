@@ -21,8 +21,8 @@ describe('带 query 的 url', function () {
     expect(getUrlQuery('phone')).to.be.equal('13888888888');
   });
 
-  it('从 url 中获取一个不存在的参数则返回 null', function () {
-    expect(getUrlQuery('sex')).to.be.eql(null);
+  it('从 url 中获取一个不存在的参数则返回 ""', function () {
+    expect(getUrlQuery('sex')).to.be.eql('');
   });
 });
 
@@ -46,8 +46,8 @@ describe('带 hash 的 url', function () {
     expect(getUrlQuery('phone')).to.be.equal('13888888888');
   });
 
-  it('从 url 中获取一个不存在的参数则返回 null', function () {
-    expect(getUrlQuery('sex')).to.be.eql(null);
+  it('从 url 中获取一个不存在的参数则返回 ""', function () {
+    expect(getUrlQuery('sex')).to.be.eql('');
   });
 });
 
@@ -58,8 +58,8 @@ describe('没有任何参数的 url', function () {
     expect(getUrlQuery()).to.be.eql({});
   });
 
-  it('从 url 中获取一个不存在的参数则返回 null', function () {
-    expect(getUrlQuery('sex')).to.be.eql(null);
+  it('从 url 中获取一个不存在的参数则返回 ""', function () {
+    expect(getUrlQuery('sex')).to.be.eql('');
   });
 });
 
@@ -72,7 +72,7 @@ describe('传入 url 参数', function () {
       age: '25',
       phone: 13888888888,
     };
-    expect(getUrlQuery(null, url)).to.be.eql(query);
+    expect(getUrlQuery(undefined, url)).to.be.eql(query);
   });
 
   it('从 url 中获取某一个指定的参数', function () {
@@ -81,8 +81,8 @@ describe('传入 url 参数', function () {
     expect(getUrlQuery('phone', url)).to.be.equal('13888888888');
   });
 
-  it('从 url 中获取一个不存在的参数则返回 null', function () {
-    expect(getUrlQuery('sex', url)).to.be.eql(null);
+  it('从 url 中获取一个不存在的参数则返回 ""', function () {
+    expect(getUrlQuery('sex', url)).to.be.eql('');
   });
 });
 
@@ -106,8 +106,8 @@ describe('带 hash 的 url：http://localhost#activity?name=zhangsan&age=25&phon
     expect(getUrlQuery('phone')).to.be.equal('13888888888');
   });
 
-  it('从 url 中获取一个不存在的参数则返回 null', function () {
-    expect(getUrlQuery('sex')).to.be.eql(null);
+  it('从 url 中获取一个不存在的参数则返回 ""', function () {
+    expect(getUrlQuery('sex')).to.be.eql('');
   });
 });
 

@@ -26,7 +26,9 @@ function getAllQueryJson(url: string): AnyObject {
  * @param {Object} key
  * @param {String} [url] 可以通过传入 url 参数来获取指定 url 的参数
  */
-function getUrlQuery(key?: string, url?: string): string | AnyObject | null {
+function getUrlQuery(key: string, url?: string): string;
+function getUrlQuery(key?: string, url?: string): AnyObject;
+function getUrlQuery(key?: string, url?: string) {
   // 校验是否存在 url
   var urlFlag = url && typeof url === 'string';
 
@@ -64,9 +66,9 @@ function getUrlQuery(key?: string, url?: string): string | AnyObject | null {
         return decodeURIComponent(r[2]);
       }
     }
-    return null;
+    return '';
   } else {
-    return null;
+    return '';
   }
 }
 
