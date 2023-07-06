@@ -589,7 +589,7 @@ obj.key.name; // 'person'
 * param {Number} [s_lng] 起始点经度
 * param {Number} [e_lat] 终点纬度
 * param {Number} [e_lng] 终点经度
-* return {Number} 距离，单位为米
+* return {Number} 距离，单位为千米
 
 ### 例子🌰
 
