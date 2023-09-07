@@ -22,7 +22,7 @@ function getUrlString(obj: AnyObject, config: { hasPrefix?: boolean } = {}): str
   // 截取最后的"&"
   paramsString = paramsString.substring(0, paramsString.length - 1);
 
-  if (config.hasPrefix) {
+  if (config.hasPrefix && paramsString) {
     paramsString = '?' + paramsString;
   }
 
