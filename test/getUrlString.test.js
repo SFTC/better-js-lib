@@ -60,6 +60,17 @@ describe('将对象转换为url参数的字符串', function() {
         })).to.equal('?name=zhangsan&age=25&phone=13888888888');
       }
     );
+
+    it('执行 getUrlString({}, { hasPrefix: true }) 会输出 ""', function () {
+      expect(
+        getUrlString(
+          {},
+          {
+            hasPrefix: true,
+          }
+        )
+      ).to.equal('');
+    });
   });
 
 });
