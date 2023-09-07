@@ -37,3 +37,7 @@
 
 - 删除 `asyncWorker` 和 `checkXlsxWorker` 方法以减少包体积
 - 优化 `getUrlQuery` 方法的 ts 类型，当获取不到参数时不再返回 `null`，而是返回 `""`
+
+## 2.3.5 / 2023-09-07
+
+- 修复 `getUrlString` 方法传入空对象并设置 `hasPrefix=true` 时返回 `"?"` 的问题，修正为返回 `""`
