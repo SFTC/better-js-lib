@@ -107,7 +107,7 @@ interface IsType {
   /** 校验 value 的数据类型是否是数字 */
   number: (value: any) => value is number;
   /** 校验 value 的数据类型是否是函数类型 */
-  fn: (value: any) => boolean;
+  fn: (value: any) => value is Function;
   /** 校验 value 的数据类型是否是 Error */
   error: (value: any) => value is Error;
   /** 校验 value 是否是一个 HTML 元素节点 */
@@ -236,7 +236,7 @@ const is: IsType = {
     && value instanceof HTMLElement
     && value.nodeType === 1,
   error: (value: any): value is Error => toStr.call(value) === '[object Error]',
-  fn: (value: any): boolean => {
+  fn: (value: any): value is Function => {
     var isAlert = typeof window !== 'undefined' && value === window.alert;
     if (isAlert) {
       return true;

@@ -1,6 +1,6 @@
 {
   "name": "better-js-lib",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "description": "jslib最好用的js库脚手架",
   "main": "lib/index.js",
   "jsnext:main": "lib/index.js",
